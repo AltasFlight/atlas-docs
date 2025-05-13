@@ -252,7 +252,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Інтерфейси підключення
+      Інші характеристики
     </span>
   </a>
   
@@ -261,34 +261,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Резервування сенсорів
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Живлення
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Комунікація
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Безпека
+      Короткий опис
     </span>
   </a>
   
@@ -331,7 +304,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Інтерфейси підключення
+      Інші характеристики
     </span>
   </a>
   
@@ -340,34 +313,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Резервування сенсорів
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Живлення
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Комунікація
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Безпека
+      Короткий опис
     </span>
   </a>
   
@@ -390,41 +336,44 @@
 
 
 <h1 id="atlas-control">Atlas Control</h1>
-<p>Atlas — це потужний польотний контролер із високою надійністю та сучасною архітектурою для професійного використання.</p>
-<h2 id="_1">Інтерфейси підключення</h2>
+<p>Atlas Control — це польотний контролер, незалежно розроблений українською компанією. Він використовує високопродуктивний процесор STM32H7 та інтегрує сенсори промислового класу. У порівнянні з попередніми автопілотами, цей контролер має кращу продуктивність і вищу надійність. Ця плата ідеально працює з прошивкою ArduPilot, а також буде сумісна з прошивкою PX4. Atlas Control чудово підходить для академічних досліджень і комерційної інтеграції систем.</p>
+<h2 id="_1">Інші характеристики</h2>
 <ul>
-<li><strong>14× PWM</strong> (з підтримкою DShot)</li>
-<li><strong>2× CAN</strong></li>
-<li><strong>2× GPS</strong></li>
-<li><strong>4× I2C</strong></li>
-<li><strong>2× ADC</strong></li>
-<li><strong>1× SPI</strong></li>
-<li><strong>USB, SD</strong></li>
-<li>PWM для RSSI</li>
+<li>Внутрішнє амортизування</li>
+<li>Підтримка підігріву IMU для покращення роботи сенсорів</li>
+<li>Окремий порт живлення UAVCAN</li>
+<li>3 комплекти IMU-сенсорів, та 2 комплекти барометрів MS5611</li>
+<li>Високопродуктивний сенсор ICM-42688-P та RM3100</li>
 </ul>
-<h2 id="_2">Резервування сенсорів</h2>
-<ul>
-<li><strong>3× IMU</strong> з підігрівом: ICM-20689, BMI-088, ICM-20649</li>
-<li><strong>2× Baro</strong>: MS5611</li>
-<li><strong>Промисловий магнітометр</strong>: RM3100</li>
-</ul>
-<h2 id="_3">Живлення</h2>
-<ul>
-<li>Розумне управління живленням</li>
-<li>Підтримка живлення до 14S</li>
-<li>Захист від короткого замикання на всіх виходах</li>
-</ul>
-<h2 id="_4">Комунікація</h2>
-<ul>
-<li>MAVLink-протокол</li>
-<li>Підтримка телеметрії 868/915 МГц</li>
-<li>Вбудований CAN для LiDAR, камер тощо</li>
-</ul>
-<h2 id="_5">Безпека</h2>
-<ul>
-<li>Повне резервування сенсорів та живлення</li>
-<li>Апаратний захист усіх портів</li>
-</ul>
+<h2 id="_2">Короткий опис</h2>
+<p>Основний процесор FMU: STM32H743</p>
+<h1 id="_3">Вбудовані сенсори:</h1>
+<p><strong>Акселерометр/Гіроскоп: ICM-42688-P (X7: BMI088)
+</strong>Акселерометр/Гіроскоп: ICM-20689
+<strong>Акселерометр/Гіроскоп: ICM-20689 (X7: ICM-20649)
+</strong>Магнітометр: RM3100
+**Барометр: MS5611 ×2</p>
+<h1 id="_4">Інтерфейси:</h1>
+<p>14 PWM-виходів (12 з підтримкою DShot)
+Підтримка кількох типів RC-входів (SBUS/CPPM/DSM)
+Аналоговий/PWM вхід RSSI
+2 GPS-порти (GPS та UART4)
+6 шин I2C (чотири з них — спеціалізовані порти I2C)
+2 порти CAN-шини
+2 порти живлення (Power A — стандартний ADC-інтерфейс, Power C — інтерфейс живлення UAVCAN)
+1 вхід ADC
+1 USB-порт</p>
+<h1 id="_5">Система живлення:</h1>
+<p>Головне Живлення: 4.5 ~ 5.4 В
+Вхід USB: 4.75 ~ 5.25 В
+Вхід сервоприводів: 0 ~ 10 В</p>
+<h1 id="_6">Вага та розміри:</h1>
+<p>Вага: 101 г</p>
+<h1 id="_7">Інші характеристики:</h1>
+<p>Робоча температура: -20 ~ 85°C
+Три IMU
+Підтримка температурної компенсації
+Вбудоване амортизування</p>
 
 
 
