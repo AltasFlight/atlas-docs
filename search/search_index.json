@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"Atlas Control","text":"<p>\u041e\u043f\u0438\u0441 \u0430\u0432\u0442\u043e\u043f\u0456\u043b\u043e\u0442\u0430...</p>"},{"location":"#_1","title":"\u0406\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0438","text":"<ul> <li>14 PWM</li> <li>2 CAN</li> </ul>"}]}
