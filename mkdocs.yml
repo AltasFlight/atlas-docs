@@ -1,0 +1,14 @@
+site_name: Atlas Control Docs
+
+nav:
+  - Головна: index.md
+  - Залізо: hardware.md
+  - Налаштування: setup.md
+
+theme:
+  name: material
+  palette:
+    primary: black
+    accent: deep orange
+  font:
+    text: Roboto Mono
