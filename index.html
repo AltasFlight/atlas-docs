@@ -59,7 +59,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-red">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -265,9 +265,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Короткий опис">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       Вбудовані сенсори:
@@ -275,8 +276,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       Інтерфейси:
@@ -284,8 +285,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       Система живлення:
@@ -293,13 +294,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       Вага та розміри:
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -398,9 +404,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Короткий опис">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       Вбудовані сенсори:
@@ -408,8 +415,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       Інтерфейси:
@@ -417,8 +424,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       Система живлення:
@@ -426,13 +433,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       Вага та розміри:
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -510,7 +522,7 @@
 </ul>
 <h2 id="_2">Короткий опис</h2>
 <p>Основний процесор FMU: STM32H743</p>
-<h2 id="_3">Вбудовані сенсори:</h2>
+<h4 id="_3">Вбудовані сенсори:</h4>
 <ul>
 <li>Акселерометр/Гіроскоп: ICM-42688-P</li>
 <li>Акселерометр/Гіроскоп: ICM-20689</li>
@@ -518,7 +530,7 @@
 <li>Магнітометр: RM3100</li>
 <li>Барометр: MS5611 ×2</li>
 </ul>
-<h2 id="_4">Інтерфейси:</h2>
+<h4 id="_4">Інтерфейси:</h4>
 <ul>
 <li>14 PWM-виходів (12 з підтримкою DShot)</li>
 <li>Підтримка кількох типів RC-входів (SBUS/CPPM/DSM)</li>
@@ -531,13 +543,13 @@
 <li>1 USB-порт
 <img alt="Опис зображення" src="images/Frame.png" /></li>
 </ul>
-<h2 id="_5">Система живлення:</h2>
+<h4 id="_5">Система живлення:</h4>
 <ul>
 <li>Головне Живлення: 4.5 ~ 5.4 В</li>
 <li>Вхід USB: 4.75 ~ 5.25 В</li>
 <li>Вхід сервоприводів: 0 ~ 10 В</li>
 </ul>
-<h2 id="_6">Вага та розміри:</h2>
+<h4 id="_6">Вага та розміри:</h4>
 <ul>
 <li>Розміри: 98мм х 62мм х 16мм</li>
 <li>Вага: 58г</li>
@@ -552,7 +564,9 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 </div>
-<p>Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення чи навантаження.</p>
+<ul>
+<li>Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення чи навантаження.</li>
+</ul>
 <h2 id="_8">Номінали напруги</h2>
 <p>Автопілот Atlas Control підтримує потрійну резервовану систему живлення, якщо підключено три джерела живлення. Три силові шини: POWER_A, POWER_C і USB.</p>
 <div class="admonition warning">
