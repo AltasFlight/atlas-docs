@@ -4,9 +4,20 @@ site_url: https://altasflight.github.io/atlas-docs/
 theme:
   name: material
   palette:
-    scheme: slate
-    primary: custom
-    accent: deep orange
+    - scheme: default
+      primary: custom
+      accent: lime
+      toggle:
+        icon: material/weather-night
+        name: Увімкнути темну тему
+    - scheme: slate
+      primary: custom
+      accent: lime
+
+
+      toggle:
+        icon: material/weather-sunny
+        name: Увімкнути світлу тему
   font:
     text: Roboto Mono
   custom_dir: overrides
@@ -16,10 +27,12 @@ extra_css:
 
 nav:
   - Опис: index.md
-  - Комплектація: FCkit.md
   - Налаштування FC: setting.md
+  - Комплектація: FCkit.md
 
 markdown_extensions:
   - admonition
   - pymdownx.superfences
-  - pymdownx.highlight
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
