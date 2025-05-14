@@ -1,14 +1,25 @@
-site_name: Atlas Control Docs
-
-nav:
-  - Головна: index.md
-  - Залізо: hardware.md
-  - Налаштування: setup.md
+site_name: Atlas Control
+site_url: https://altasflight.github.io/atlas-docs/
 
 theme:
   name: material
   palette:
-    primary: black
+    scheme: slate
+    primary: custom
     accent: deep orange
   font:
     text: Roboto Mono
+  custom_dir: overrides
+
+extra_css:
+  - extra.css
+
+nav:
+  - Опис: index.md
+  - Комплектація: FCkit.md
+  - Налаштування FC: setting.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight
