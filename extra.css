@@ -18,3 +18,11 @@
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
+
+.md-typeset h3 {
+  color: #4CAF50; /* темно-зелений, або заміни на будь-який HEX */
+}
+
+.md-typeset h1 {
+  color: #4CAF50; /* темно-зелений, або заміни на будь-який HEX */
+}
