@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="FCkit/">
+        <link rel="next" href="setting/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -398,12 +398,12 @@
   
   
     <li class="md-nav__item">
-      <a href="FCkit/" class="md-nav__link">
+      <a href="setting/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Комплектація
+    Налаштування FC
     
   </span>
   
@@ -420,12 +420,12 @@
   
   
     <li class="md-nav__item">
-      <a href="setting/" class="md-nav__link">
+      <a href="FCkit/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Налаштування FC
+    Комплектація
     
   </span>
   
@@ -581,9 +581,9 @@
 
 <h1 id="atlas-control">Atlas Control<a class="headerlink" href="#atlas-control" title="Permanent link">&para;</a></h1>
 <p>Atlas Control — це польотний контролер, розроблений українською командою. Він використовує високопродуктивний процесор STM32H7 та інтегрує сенсори промислового класу. У порівнянні з іншими автопілотами, цей контролер має кращу продуктивність і вищу надійність. Ця плата ідеально працює з прошивкою ArduPilot, а також сумісна з прошивкою PX4. Atlas Control чудово підходить для академічних досліджень і комерційної інтеграції систем.</p>
-<p><img alt="Фото в корпусі" src="images/body_moscow.jpg" /></p>
+<p><img alt="Фото в корпусі" src="images/body_size.png" /></p>
 <p><a href="images/1.png">Фото плати</a></p>
-<h2 id="_1"><em>Короткий опис</em><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1"><strong>Короткий опис</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Основний процесор FMU: STM32H743</p>
 <h3 id="_2">Вбудовані сенсори:<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
@@ -635,9 +635,11 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 </div>
-<p>Живлення шини PWM OUT
-Силові шини PWM OUT (0В до 10В) електрично <strong>з'єднані</strong> з лініями живлення VCC 5V/BATT_ADC.
-У такій конфігурації можливе ненавмисне живлення шини PWM через PMU, що може спричинити збої в роботі автопілота (наприклад, втрату зв’язку або імпульсів до ESC/серво).</p>
+<p>Живлення шини PWM OUT</p>
+<ul>
+<li>Силові шини PWM OUT (0В до 10В) електрично <strong>з'єднані</strong> з лініями живлення VCC 5V/BATT_ADC.
+У такій конфігурації можливе ненавмисне живлення шини PWM через PMU, що може спричинити збої в роботі автопілота (наприклад, втрату зв’язку або імпульсів до ESC/серво).</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 </div>
