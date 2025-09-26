@@ -117,11 +117,11 @@ Atlas Control має 2 аналогові входи, один для до 6.6 �
 ### *Firmware*
 
 <ul>
-    <li><a href="firmware/arducopter.apj" download>ArduCopter</a></li>
-    <li><a href="firmware/arduplane.apj" download>ArduPlane</a></li>
-    <li><a href="firmware/ardurover.apj" download>ArduRover</a></li>
-    <li><a href="firmware/ardusub.apj" download>ArduSub</a></li>
-    <li><a href="firmware/blimp.apj" download>ArduBlimp</a></li>
+  <li><a href="/atlas-docs/firmware/arducopter.apj" download>ArduCopter</a></li>
+  <li><a href="/atlas-docs/firmware/arduplane.apj" download>ArduPlane</a></li>
+  <li><a href="/atlas-docs/firmware/ardurover.apj" download>ArduRover</a></li>
+  <li><a href="/atlas-docs/firmware/ardusub.apj" download>ArduSub</a></li>
+  <li><a href="/atlas-docs/firmware/blimp.apj" download>ArduBlimp</a></li>
 </ul>
 
 
