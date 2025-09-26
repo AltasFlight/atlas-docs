@@ -113,3 +113,16 @@ Atlas Control має 2 аналогові входи, один для до 6.6 �
 Задайте параметри BATT_AMP_PERVLT та BATT_VOLT_MULT відповідно до характеристик використовуваного аналогового модуля живлення (PMU).
 
 Якщо ви використовуєте DroneCAN-модуль живлення та монітором батареї — DroneCAN Power Module. Його слід підключати до роз’єму Power C, і він вже попередньо налаштований для використання.
+
+### *Firmware*
+
+<ul>
+    <li><a href="firmware/arducopter.apj" download>ArduCopter</a></li>
+    <li><a href="firmware/arduplane.apj" download>ArduPlane</a></li>
+    <li><a href="firmware/ardurover.apj" download>ArduRover</a></li>
+    <li><a href="firmware/ardusub.apj" download>ArduSub</a></li>
+    <li><a href="firmware/blimp.apj" download>ArduBlimp</a></li>
+</ul>
+
+
+
