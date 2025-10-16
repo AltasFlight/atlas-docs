@@ -333,7 +333,7 @@
                                             </li>
 
                                             <li class="md-nav__item">
-                                                <a href="#_1" class="md-nav__link">
+                                                <a href="#analog-inputs" class="md-nav__link">
     <span class="md-ellipsis">
       Аналогові входи:
     </span>
@@ -351,7 +351,7 @@
                                             </li>
 
                                             <li class="md-nav__item">
-                                                <a href="#_2" class="md-nav__link">
+                                                <a href="#batt_monitor" class="md-nav__link">
     <span class="md-ellipsis">
       Моніторинг батареї
     </span>
@@ -443,7 +443,7 @@
                                 </li>
 
                                 <li class="md-nav__item">
-                                    <a href="#_1" class="md-nav__link">
+                                    <a href="#analog-inputs" class="md-nav__link">
     <span class="md-ellipsis">
       Аналогові входи:
     </span>
@@ -461,7 +461,7 @@
                                 </li>
 
                                 <li class="md-nav__item">
-                                    <a href="#_2" class="md-nav__link">
+                                    <a href="#batt_monitor" class="md-nav__link">
     <span class="md-ellipsis">
       Моніторинг батареї
     </span>
@@ -579,7 +579,7 @@
                             <p>PWM14(M14) 63</p>
                         </li>
                     </ul>
-                    <h3 id="_1"><em>Аналогові входи:</em><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+                    <h3 id="analog-inputs"><em>Аналогові входи:</em><a class="headerlink" href="#analog-inputs" title="Permanent link">&para;</a></h3>
                     <p>Atlas Control має 2 аналогові входи, один для до 6.6 В другий для 3,3 В.</p>
                     <ul>
                         <li>
@@ -592,7 +592,7 @@
                             <p>Analog 3.3V RSSI input pin = 6</p>
                         </li>
                     </ul>
-                    <h3 id="rc-rc-input"><em>Вхід RC (RC Input)</em><a class="headerlink" href="#rc-rc-input" title="Permanent link">&para;</a></h3>
+                    <h3 id="rc-input"><em>Вхід RC (RC Input)</em><a class="headerlink" href="#rc-input" title="Permanent link">&para;</a></h3>
                     <p>Пін RCIN, який за замовчуванням прив’язаний до таймерного входу, може використовуватись для всіх протоколів приймачів, що підтримуються ArduPilot, окрім CRSF/ELRS та SRXL2, які потребують справжнього UART-з'єднання. Однак FPort, при підключенні через RCIN, забезпечує лише прийом RC-сигналів, без телеметрії.</p>
                     <p>Щоб забезпечити підтримку CRSF та вбудованої телеметрії в FPort, CRSF та SRXL2 приймачах, потрібно використовувати повноцінний UART, наприклад SERIAL6 (UART7). Нижче наведені налаштування для підключення через SERIAL6:</p>
                     <ul>
@@ -611,7 +611,7 @@
                     </ul>
                     <p>У ArduPilot можна використовувати будь-який UART-порт для підключення RC-систем (крім PPM-приймачів). Детальніше дивіться в розділі Radio Control Systems (Системи радіокерування).</p>
                     <p>Живлення на цьому роз'ємі забезпечується через USB або через PMU.</p>
-                    <h3 id="_2"><em>Моніторинг батареї</em><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+                    <h3 id="batt_monitor"><em>Моніторинг батареї</em><a class="headerlink" href="#batt_monitor" title="Permanent link">&para;</a></h3>
                     <p>Якщо ви використовуєте аналоговий монітор батареї, підключіть його до роз’єму Power A і встановіть наступні параметри (якщо використовується як другий монітор — використовуйте параметри BATT2):</p>
                     <ul>
                         <li>
@@ -626,7 +626,7 @@
                     </ul>
                     <p>Задайте параметри BATT_AMP_PERVLT та BATT_VOLT_MULT відповідно до характеристик використовуваного аналогового модуля живлення (PMU).</p>
                     <p>Якщо ви використовуєте DroneCAN-модуль живлення та монітором батареї — DroneCAN Power Module. Його слід підключати до роз’єму Power C, і він вже попередньо налаштований для використання.</p>
-                    <h3 id="_3"><em>Firmware</em><a class="headerlink" href="#_3" title="Firmware linк">&para;</a></h3>
+                    <h3 id="firmware"><em>Firmware</em><a class="headerlink" href="#firmware" title="Firmware linк">&para;</a></h3>
                     <details>
                         <summary><strong>ArduPilot 4.7-dev</strong></summary>
                         <ul>
