@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fc44bd79-e6ec-4ff2-9ad8-d757cfb4422e" name="Changes" comment="update site">
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_5_7/arducopter_4.5.7.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_5_7/arducopter_4.5.7.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_5_7/arduplane_4.5.7.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_5_7/arduplane_4.5.7.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_5_7/ardurover_4.5.7.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_5_7/ardurover_4.5.7.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_5_7/ardusub_4.5.7.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_5_7/ardusub_4.5.7.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_5_7/blimp_4.5.7.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_5_7/blimp_4.5.7.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_6_2/arducopter_4.6.2.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_6_2/arducopter_4.6.2.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_6_2/arduplane_4.6.2.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_6_2/arduplane_4.6.2.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_6_2/ardurover_4.6.2.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_6_2/ardurover_4.6.2.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_6_2/ardusub_4.6.2.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_6_2/ardusub_4.6.2.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_6_2/blimp_4.6.2.apj" beforeDir="false" afterPath="$PROJECT_DIR$/images/ardupilot-4_6_2/blimp_4.6.2.apj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_7_0/arducopter_4.7.apj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_7_0/arduplane_4.7.apj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_7_0/ardurover_4.7.apj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_7_0/ardusub_4.7.apj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ardupilot-4_7_0/blimp_4.7.apj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/setting/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/gh-pages" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AltasFlight"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AltasFlight/atlas-docs.git",
+    "accountId": "f3378593-6d7d-400e-890e-b0b5157ae110"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="33EZtZSrLtolvkv1bb2bHWbyBsH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "gh-pages",
+    "ignore_missing_gitignore": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ai/Documents/GitHub/atlas-docs/images/ardupilot-4_7_0",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.5091954",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/ardupilot-4_7_0" />
+      <recent name="$PROJECT_DIR$/images/ardupilot-4_6_2" />
+      <recent name="$PROJECT_DIR$/images/ardupilot-4_5_7" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/ardupilot-4_7_0" />
+      <recent name="$PROJECT_DIR$/images/ardupilot-4_6_2" />
+      <recent name="$PROJECT_DIR$/images/ardupilot-4_5_7" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/docs" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc44bd79-e6ec-4ff2-9ad8-d757cfb4422e" name="Changes" comment="" />
+      <created>1758884408340</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758884408340</updated>
+      <workItem from="1758884409711" duration="5840000" />
+      <workItem from="1760613496867" duration="6533000" />
+      <workItem from="1762072264747" duration="2217000" />
+    </task>
+    <task id="LOCAL-00001" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758884636296</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758884636296</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758885128984</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758885128984</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758888321391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758888321391</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758888385870</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758888385870</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758888524763</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758888524763</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758888613525</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758888613525</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update site">
+      <option name="closed" value="true" />
+      <created>1758892182287</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758892182287</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760613691097</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1760613691097</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760613889500</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1760613889500</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760614124116</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1760614124116</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760614234138</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760614234138</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760617695309</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1760617695309</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760618204788</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1760618204788</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760618373610</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1760618373610</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760618506810</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1760618506810</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760619287912</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1760619287912</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760619908293</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1760619908293</updated>
+    </task>
+    <task id="LOCAL-00018" summary="update site">
+      <option name="closed" value="true" />
+      <created>1760621883965</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1760621883965</updated>
+    </task>
+    <task id="LOCAL-00019" summary="update site">
+      <option name="closed" value="true" />
+      <created>1762072284341</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1762072284341</updated>
+    </task>
+    <task id="LOCAL-00020" summary="update site">
+      <option name="closed" value="true" />
+      <created>1762072442855</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1762072442856</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update site">
+      <option name="closed" value="true" />
+      <created>1762072996895</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1762072996895</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update site">
+      <option name="closed" value="true" />
+      <created>1762073267606</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1762073267606</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update site">
+      <option name="closed" value="true" />
+      <created>1762073433400</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1762073433400</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/gh-pages" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/gh-pages" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update site" />
+    <option name="LAST_COMMIT_MESSAGE" value="update site" />
+  </component>
+</project>
