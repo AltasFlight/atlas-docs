@@ -1,730 +1,832 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Control — Документація</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1d16'/%3E%3Cpolygon points='16,6 26,24 6,24' fill='none' stroke='%23c4d94e' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <style>
+        :root {
+            --olive: #3d4a2a;
+            --olive-light: #5a6b3c;
+            --khaki: #8b9a6b;
+            --sand: #c8c0a8;
+            --cream: #f0ece2;
+            --dark: #1a1d16;
+            --dark2: #20241a;
+            --dark3: #252a1e;
+            --white: #fafaf7;
+            --accent: #c4d94e;
+            --text: #d4d8cc;
+            --text-light: #7a7e72;
+            --border: rgba(196, 217, 78, 0.1);
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Source Sans 3', sans-serif;
+            --sidebar-width: 260px;
+        }
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <link rel="canonical" href="https://altasflight.github.io/atlas-docs/">
-      
-      
-      
-        <link rel="next" href="setting/">
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
-    
-    
-      
-        <title>Atlas Control</title>
-      
-    
-    
-      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
-      
-      
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        body {
+            font-family: var(--sans);
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto Mono";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="extra.css">
-    
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
+        /* ====== TOPBAR ====== */
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 56px;
+            background: rgba(26, 29, 22, 0.97);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 24px;
+        }
 
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="lime">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#atlas-control" class="md-skip">
-          Skip to content
-        </a>
-      
+        .topbar-logo {
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .topbar-logo span { color: var(--accent); }
+
+        .topbar-sep {
+            width: 1px;
+            height: 20px;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .topbar-title {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .topbar-right {
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .topbar-link {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .topbar-link:hover { color: var(--accent); }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            color: var(--text);
+        }
+
+        /* ====== LAYOUT ====== */
+        .layout {
+            display: flex;
+            padding-top: 56px;
+            min-height: 100vh;
+        }
+
+        /* ====== SIDEBAR ====== */
+        .sidebar {
+            width: var(--sidebar-width);
+            flex-shrink: 0;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            background: var(--dark2);
+            border-right: 1px solid var(--border);
+            padding: 24px 0;
+        }
+
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: var(--olive); border-radius: 2px; }
+
+        .nav-section {
+            margin-bottom: 8px;
+        }
+
+        .nav-section-title {
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 16px 20px 8px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: var(--text-light);
+            text-decoration: none;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+            transition: all 0.15s;
+        }
+        .nav-item:hover {
+            color: var(--text);
+            background: rgba(196, 217, 78, 0.04);
+        }
+        .nav-item.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(196, 217, 78, 0.06);
+        }
+
+        .nav-subitem {
+            display: block;
+            padding: 5px 20px 5px 32px;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--text-light);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.15s;
+        }
+        .nav-subitem:hover { color: var(--accent); }
+        .nav-subitem.active { color: var(--accent); }
+
+        /* ====== MAIN CONTENT ====== */
+        .main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            max-width: 860px;
+            padding: 48px 56px 80px;
+        }
+
+        /* ====== PAGE ====== */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ====== TYPOGRAPHY ====== */
+        .page-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .page-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--mono);
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--mono);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 28px 0 12px;
+        }
+
+        p {
+            color: var(--text);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        /* ====== SPECS TABLE ====== */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+        .spec-table th {
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            padding: 10px 16px;
+            text-align: left;
+            background: var(--dark3);
+            border-bottom: 1px solid var(--border);
+        }
+        .spec-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(196, 217, 78, 0.05);
+            color: var(--text);
+        }
+        .spec-table td:first-child {
+            color: var(--text-light);
+            font-size: 13px;
+            width: 40%;
+        }
+        .spec-table td strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+        .spec-table tr:hover td {
+            background: rgba(196, 217, 78, 0.02);
+        }
+
+        /* ====== IMU COMPARISON ====== */
+        .imu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .imu-card {
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            padding: 16px;
+        }
+        .imu-card-model {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .imu-card-primary {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .imu-card-label {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        .imu-card-secondary {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--khaki);
+            line-height: 1.6;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ====== CODE BLOCK ====== */
+        .code-block {
+            background: var(--dark3);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--sand);
+            overflow-x: auto;
+            line-height: 1.8;
+        }
+        .code-block .comment { color: var(--text-light); }
+        .code-block .key { color: var(--accent); }
+        .code-block .val { color: var(--white); }
+
+        /* ====== LIST ====== */
+        .doc-list {
+            list-style: none;
+            margin: 12px 0 20px;
+        }
+        .doc-list li {
+            padding: 6px 0 6px 20px;
+            font-size: 14px;
+            color: var(--text);
+            border-bottom: 1px solid rgba(196, 217, 78, 0.04);
+            position: relative;
+        }
+        .doc-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 10px;
+            top: 8px;
+        }
+
+        /* ====== CALLOUT ====== */
+        .callout {
+            border-left: 3px solid;
+            padding: 12px 16px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .callout.warning {
+            border-color: #e8a838;
+            background: rgba(232, 168, 56, 0.06);
+            color: #e8c87a;
+        }
+        .callout.tip {
+            border-color: var(--accent);
+            background: rgba(196, 217, 78, 0.05);
+            color: var(--sand);
+        }
+        .callout.note {
+            border-color: #5b8dd9;
+            background: rgba(91, 141, 217, 0.06);
+            color: #9ab8e8;
+        }
+        .callout-title {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        /* ====== FIRMWARE DOWNLOADS ====== */
+        .firmware-group {
+            margin: 12px 0;
+            border: 1px solid var(--border);
+        }
+        .firmware-header {
+            background: var(--dark3);
+            padding: 12px 16px;
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+        .firmware-header:hover { background: rgba(196, 217, 78, 0.06); }
+        .firmware-header .chevron {
+            font-size: 10px;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+        .firmware-header.open .chevron { transform: rotate(180deg); }
+        .firmware-body {
+            display: none;
+            padding: 8px 0;
+        }
+        .firmware-body.open { display: block; }
+        .firmware-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .firmware-link:hover {
+            color: var(--accent);
+            background: rgba(196, 217, 78, 0.04);
+        }
+        .firmware-link::before {
+            content: '↓';
+            color: var(--accent);
+        }
+
+        /* ====== KIT TABLE ====== */
+        .kit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .kit-table td {
+            padding: 10px 16px;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(196, 217, 78, 0.05);
+        }
+        .kit-table td:first-child {
+            font-family: var(--mono);
+            color: var(--accent);
+            font-size: 13px;
+            width: 60px;
+            font-weight: 700;
+        }
+        .kit-table td:last-child { color: var(--text); }
+        .kit-table tr:hover td { background: rgba(196, 217, 78, 0.02); }
+
+        /* ====== MOBILE ====== */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.25s;
+                z-index: 50;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .main {
+                margin-left: 0;
+                padding: 32px 20px 60px;
+            }
+            .hamburger { display: block; }
+            .imu-grid { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+    <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+    </button>
+    <a href="https://atlascontrol.pro" class="topbar-logo">Atlas<span>Control</span></a>
+    <div class="topbar-sep"></div>
+    <span class="topbar-title">Документація</span>
+    <div class="topbar-right">
+        <a href="https://atlascontrol.pro" class="topbar-link">← Сайт</a>
+        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link">Контакт</a>
     </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Atlas Control" class="md-header__button md-logo" aria-label="Atlas Control" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Atlas Control
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Опис
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="lime"  aria-label="Увімкнути темну тему"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Увімкнути темну тему" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="lime"  aria-label="Увімкнути світлу тему"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Увімкнути світлу тему" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
-    
-    
-  </nav>
-  
 </header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
 
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="." title="Atlas Control" class="md-nav__button md-logo" aria-label="Atlas Control" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    Atlas Control
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Опис
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Опис
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Короткий опис
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Короткий опис">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Вбудовані сенсори:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Інтерфейси:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Система живлення:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Вага та розміри:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      Інші характеристики:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Інші характеристики:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      Номінали напруги
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      Максимальні параметри для нормальної роботи:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      Порт налагодження (Debug Port)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      Периферійні пристрої, що підтримуються:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="setting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Налаштування FC
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="FCkit/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Комплектація
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Короткий опис
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Короткий опис">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Вбудовані сенсори:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Інтерфейси:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Система живлення:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Вага та розміри:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      Інші характеристики:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Інші характеристики:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      Номінали напруги
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      Максимальні параметри для нормальної роботи:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      Порт налагодження (Debug Port)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      Периферійні пристрої, що підтримуються:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-<h1 id="atlas-control">Atlas Control<a class="headerlink" href="#atlas-control" title="Permanent link">&para;</a></h1>
-<p>Atlas Control — це польотний контролер, розроблений українською командою. Він використовує високопродуктивний процесор STM32H7 та інтегрує сенсори промислового класу. У порівнянні з іншими автопілотами, цей контролер має кращу продуктивність і вищу надійність. Ця плата ідеально працює з прошивкою ArduPilot, а також сумісна з прошивкою PX4. Atlas Control чудово підходить для академічних досліджень і комерційної інтеграції систем.</p>
-<p><img alt="Фото в корпусі" src="images/body_size.png" /></p>
-<p><a href="images/1.png">Фото плати</a></p>
-<h2 id="_1"><strong>Короткий опис</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>Основний процесор FMU: STM32H743</p>
-<h3 id="_2">Вбудовані сенсори:<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Акселерометр/Гіроскоп: ICM-42688-P</li>
-<li>Акселерометр/Гіроскоп: ICM-20689</li>
-<li>Акселерометр/Гіроскоп: ICM-20689</li>
-<li>Магнітометр: RM3100</li>
-<li>Барометр: MS5611 ×2</li>
-</ul>
-<h3 id="_3">Інтерфейси:<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<ul>
-<li>14 PWM-виходів (12 з підтримкою DShot)</li>
-<li>Підтримка кількох типів RC-входів (SBUS/CPPM/DSM)</li>
-<li>Аналоговий/PWM вхід RSSI</li>
-<li>2 GPS-порти (GPS та UART4)</li>
-<li>6 шин I2C (чотири з них — спеціалізовані порти I2C)</li>
-<li>2 порти CAN-шини</li>
-<li>2 порти живлення (Power A — стандартний ADC-інтерфейс, Power C — інтерфейс живлення UAVCAN)</li>
-<li>1 вхід ADC</li>
-<li>1 USB-порт</li>
-</ul>
-<p><img alt="Опис зображення" src="images/Frame.png" /></p>
-<h3 id="_4">Система живлення:<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Головне Живлення: 4.5 ~ 5.4 В</li>
-<li>Вхід USB: 4.75 ~ 5.25 В</li>
-<li>Вхід сервоприводів: 0 ~ 10 В</li>
-</ul>
-<h3 id="_5">Вага та розміри:<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Розміри: 98мм х 62мм х 16мм</li>
-<li>Вага: 58г</li>
-</ul>
-<h2 id="_6"><em>Інші характеристики:</em><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Внутрішнє амортизування</li>
-<li>Підтримка підігріву IMU для покращення роботи сенсорів</li>
-<li>Окремий порт живлення UAVCAN</li>
-<li>Робоча температура: -20 ~ 85°C</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<ul>
-<li>Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення чи навантаження.</li>
-</ul>
-<h3 id="_7">Номінали напруги<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>Автопілот Atlas Control підтримує потрійну резервовану систему живлення, якщо підключено три джерела живлення. Три силові шини: POWER_A, POWER_C і USB.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<p>Живлення шини PWM OUT</p>
-<ul>
-<li>Силові шини PWM OUT (0В до 10В) електрично <strong>з'єднані</strong> з лініями живлення VCC 5V/BATT_ADC.
-У такій конфігурації можливе ненавмисне живлення шини PWM через PMU, що може спричинити збої в роботі автопілота (наприклад, втрату зв’язку або імпульсів до ESC/серво).</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-</div>
-<p>✅ Рекомендовано: для живлення потужних сервоприводів або ESC використовуйте зовнішній BEC, підключений безпосередньо до PWM-шини, щоб уникнути перевантаження або нестабільної роботи системи.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-</div>
-<p>У настпуних версіях Atlas Control буде використовуватись подібна імплементація:</p>
-<ul>
-<li>Силові шини PWM OUT (0В до 10В) не живлять плату автопілота і не отримують живлення від неї. Щоб автопілот працював, необхідно подати живлення на одну з ліній: POWER_A, POWER_C або USB. Без цього плата залишиться знеживленою.</li>
-</ul>
-<h3 id="_8">Максимальні параметри для нормальної роботи:<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>У звичайному режимі роботи автопілот Atlas Control використовує джерела живлення у такому порядку пріоритету:</p>
-<ol>
-<li>
-<p>POWER_A та POWER_C (вхідна напруга: 4.5 В до 5.4 В)</p>
-</li>
-<li>
-<p>USB-вхід (вхідна напруга: 4.75 В до 5.25 В)</p>
-</li>
-</ol>
-<p>Тобто, система завжди надає перевагу живленню через POWER_A/POWER_C, а USB використовується лише у разі їхньої відсутності.</p>
-<h3 id="debug-port">Порт налагодження (Debug Port)<a class="headerlink" href="#debug-port" title="Permanent link">&para;</a></h3>
-<p>Системна серійна консоль та інтерфейс SWD працюють через порт DSU7.
-Для підключення достатньо з’єднати FTDI-кабель з роз’ємом DSU7 (у комплекті продукту є кабель від виробників).</p>
-<h3 id="_9">Периферійні пристрої, що підтримуються:<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Цифровий датчик повітряної швидкості</li>
-<li>Телекомунікаційний радіомодуль</li>
-<li>Дальноміри / Датчики відстані</li>
-<li>Інші сумісні пристрої</li>
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+<div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="nav-section">
+            <div class="nav-section-title">Огляд</div>
+            <a class="nav-item active" onclick="showPage('overview', this)">Опис контролера</a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'sensors')">Сенсори</a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'interfaces')">Інтерфейси</a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'power')">Живлення</a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'imu-diff')">Різниця між моделями</a>
         </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
+        <div class="nav-section">
+            <div class="nav-section-title">Налаштування</div>
+            <a class="nav-item" onclick="showPage('settings', this)">Налаштування FC</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'uart')">UART порти</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'pwm')">PWM виходи</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'gpio')">GPIO</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'analog')">Аналогові входи</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'rc')">RC вхід</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'battery')">Моніторинг батареї</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'firmware')">Firmware</a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">Комплектація</div>
+            <a class="nav-item" onclick="showPage('kit', this)">Що в комплекті</a>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- ===== PAGE: OVERVIEW ===== -->
+        <div class="page active" id="page-overview">
+            <div class="page-label">Документація</div>
+            <h1>Atlas Control</h1>
+            <p>Atlas Control — польотний контролер українського виробництва на базі процесора STM32H7 з сенсорами промислового класу. Повна сумісність з ArduPilot і PX4. Розроблений для академічних досліджень, комерційної інтеграції та оборонного застосування.</p>
+
+            <h2 id="sensors">Вбудовані сенсори</h2>
+            <table class="spec-table">
+                <thead>
+                    <tr><th>Сенсор</th><th>Компонент</th><th>Призначення</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Акселерометр/Гіроскоп (основний)</td><td><strong>Залежить від моделі</strong></td><td>Основний IMU</td></tr>
+                    <tr><td>Акселерометр/Гіроскоп</td><td><strong>ICM-42688-P</strong></td><td>High-rate, для спідронів</td></tr>
+                    <tr><td>Акселерометр/Гіроскоп</td><td><strong>BMI088</strong></td><td>Вібростійкий, резервний</td></tr>
+                    <tr><td>Магнітометр</td><td><strong>RM3100</strong></td><td>Компас</td></tr>
+                    <tr><td>Барометр</td><td><strong>MS5611 ×2</strong></td><td>Висотометр (резервування)</td></tr>
+                </tbody>
+            </table>
+
+            <h2 id="imu-diff">Різниця між моделями</h2>
+            <p>Всі моделі мають однакові додаткові IMU (ICM-42688-P + BMI088). Різниця лише в основному IMU:</p>
+            <div class="imu-grid">
+                <div class="imu-card">
+                    <div class="imu-card-model">Control</div>
+                    <div class="imu-card-primary">ICM-42688-P</div>
+                    <div class="imu-card-label">Entry · STM32H743</div>
+                    <div class="imu-card-secondary">+ ICM-42688-P (high-rate)<br>+ BMI088 (vibro)</div>
+                </div>
+                <div class="imu-card" style="border-color: rgba(196,217,78,0.2)">
+                    <div class="imu-card-model">Control+</div>
+                    <div class="imu-card-primary">Murata SCH16T</div>
+                    <div class="imu-card-label">Industrial · STM32H753</div>
+                    <div class="imu-card-secondary">+ ICM-42688-P (high-rate)<br>+ BMI088 (vibro)</div>
+                </div>
+                <div class="imu-card" style="border-color: rgba(196,217,78,0.3)">
+                    <div class="imu-card-model">Control Pro</div>
+                    <div class="imu-card-primary">ADIS16470</div>
+                    <div class="imu-card-label">Professional · STM32H753</div>
+                    <div class="imu-card-secondary">+ ICM-42688-P (high-rate)<br>+ BMI088 (vibro)</div>
+                </div>
+                <div class="imu-card" style="border-color: rgba(196,217,78,0.5)">
+                    <div class="imu-card-model">Control Apex</div>
+                    <div class="imu-card-primary">ADIS16477</div>
+                    <div class="imu-card-label">Tactical · STM32H753</div>
+                    <div class="imu-card-secondary">+ ICM-42688-P (high-rate)<br>+ BMI088 (vibro)</div>
+                </div>
+            </div>
+
+            <h2 id="interfaces">Інтерфейси</h2>
+            <table class="spec-table">
+                <thead><tr><th>Інтерфейс</th><th>Деталі</th></tr></thead>
+                <tbody>
+                    <tr><td>PWM виходи</td><td><strong>14</strong> (12 з DShot)</td></tr>
+                    <tr><td>RC вхід</td><td><strong>SBUS / CPPM / DSM</strong></td></tr>
+                    <tr><td>RSSI</td><td><strong>Аналоговий / PWM</strong></td></tr>
+                    <tr><td>GPS порти</td><td><strong>2</strong> (GPS + UART4)</td></tr>
+                    <tr><td>I2C</td><td><strong>6 шин</strong> (4 спеціалізовані)</td></tr>
+                    <tr><td>CAN Bus</td><td><strong>2 порти</strong></td></tr>
+                    <tr><td>Живлення</td><td><strong>Power A</strong> (ADC) + <strong>Power C</strong> (UAVCAN)</td></tr>
+                    <tr><td>ADC</td><td><strong>1 вхід</strong></td></tr>
+                    <tr><td>USB</td><td><strong>1 порт</strong></td></tr>
+                </tbody>
+            </table>
+
+            <h2 id="power">Система живлення</h2>
+            <table class="spec-table">
+                <thead><tr><th>Параметр</th><th>Значення</th></tr></thead>
+                <tbody>
+                    <tr><td>Основне живлення</td><td><strong>4.5 – 5.4 В</strong></td></tr>
+                    <tr><td>USB вхід</td><td><strong>4.75 – 5.25 В</strong></td></tr>
+                    <tr><td>Вхід сервоприводів</td><td><strong>0 – 10 В</strong></td></tr>
+                    <tr><td>Розміри</td><td><strong>98 × 62 × 16 мм</strong></td></tr>
+                    <tr><td>Вага</td><td><strong>58 г</strong></td></tr>
+                    <tr><td>Температура</td><td><strong>−20 … +85 °C</strong></td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout warning">
+                <div class="callout-title">⚠ Увага</div>
+                Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення або навантаження.
+            </div>
+
+            <div class="callout note">
+                <div class="callout-title">ℹ Резервування живлення</div>
+                Atlas Control підтримує потрійну резервовану систему живлення: POWER_A, POWER_C і USB. Пріоритет: POWER_A/C → USB.
+            </div>
+        </div>
+
+        <!-- ===== PAGE: SETTINGS ===== -->
+        <div class="page" id="page-settings">
+            <div class="page-label">Налаштування</div>
+            <h1>Налаштування FC</h1>
+
+            <h2 id="uart">Базовий порядок UART</h2>
+            <div class="code-block">
+<span class="key">SERIAL0</span> = console    = <span class="val">USB</span>           <span class="comment">// MAVLink2</span>
+<span class="key">SERIAL1</span> = Telemetry1 = <span class="val">USART2</span>        <span class="comment">// MAVLink2 default, DMA</span>
+<span class="key">SERIAL2</span> = Telemetry2 = <span class="val">USART6</span>        <span class="comment">// MAVLink2 default, DMA</span>
+<span class="key">SERIAL3</span> = GPS1       = <span class="val">USART1</span>
+<span class="key">SERIAL4</span> = GPS2       = <span class="val">UART4</span>
+<span class="key">SERIAL6</span> = USER       = <span class="val">UART7</span>
+            </div>
+            <p>Серійні протоколи можна налаштовувати відповідно до власних уподобань — порти адаптуються для різних периферійних пристроїв.</p>
+
+            <h2 id="pwm">PWM виходи</h2>
+            <p>Контролер підтримує до 14 PWM-виходів. Усі 14 каналів підтримують стандартний PWM. Канали 1–12 також підтримують DShot, канали 13–14 — тільки PWM (без DMA).</p>
+
+            <h3>Групування виходів</h3>
+            <table class="spec-table">
+                <thead><tr><th>Група</th><th>Виходи</th><th>Протоколи</th></tr></thead>
+                <tbody>
+                    <tr><td>Група 1</td><td><strong>1, 2, 3, 4</strong></td><td>PWM + DShot + Bi-directional DShot</td></tr>
+                    <tr><td>Група 2</td><td><strong>5, 6, 7, 8</strong></td><td>PWM + DShot</td></tr>
+                    <tr><td>Група 3</td><td><strong>9, 10, 11, 12</strong></td><td>PWM + DShot</td></tr>
+                    <tr><td>Група 4</td><td><strong>13, 14</strong></td><td>PWM only (без DMA)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="callout warning">
+                <div class="callout-title">⚠ Важливо</div>
+                Всі виходи в межах однієї групи повинні використовувати однакову частоту та протокол. Якщо хоч один канал у групі використовує DShot — всі канали цієї групи також мають працювати на DShot.
+            </div>
+
+            <h2 id="gpio">GPIOs</h2>
+            <p>Всі 14 виходів можна використовувати як GPIO (реле, кнопки, RPM тощо). Для цього встановіть <code style="font-family:var(--mono); color:var(--accent); font-size:12px;">SERVOx_FUNCTION = -1</code>.</p>
+
+            <h3>Нумерація GPIO (ArduPilot)</h3>
+            <div class="code-block">
+PWM1(M1)=50  PWM2(M2)=51  PWM3(M3)=52   PWM4(M4)=53
+PWM5(M5)=54  PWM6(M6)=55  PWM7(M7)=56   PWM8(M8)=57
+PWM9(M9)=58  PWM10(M10)=59 PWM11(M11)=60 PWM12(M12)=61
+PWM13(M13)=62 PWM14(M14)=63
+            </div>
+
+            <h2 id="analog">Аналогові входи</h2>
+            <div class="code-block">
+<span class="key">ADC Pin18</span> → ADC 6.6V Sense
+<span class="key">ADC Pin4</span>  → ADC 3.3V Sense
+<span class="key">Analog 3.3V RSSI</span> input pin = 6
+            </div>
+
+            <h2 id="rc">Вхід RC</h2>
+            <p>Пін RCIN підтримує всі RC-протоколи ArduPilot, окрім CRSF/ELRS та SRXL2 — вони потребують UART-з'єднання. Для CRSF та телеметрії FPort використовуйте SERIAL6 (UART7).</p>
+
+            <h3>Налаштування SERIAL6 для RC</h3>
+            <div class="code-block">
+<span class="comment">// FPort</span>
+<span class="key">SERIAL6_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL6_OPTIONS</span>  = <span class="val">15</span>
+
+<span class="comment">// CRSF / ELRS</span>
+<span class="key">SERIAL6_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL6_OPTIONS</span>  = <span class="val">0</span>
+
+<span class="comment">// SRXL2 (тільки TX пін приймача)</span>
+<span class="key">SERIAL6_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL6_OPTIONS</span>  = <span class="val">4</span>
+            </div>
+
+            <h2 id="battery">Моніторинг батареї</h2>
+            <p>В комплекті постачається аналоговий PMU (до 14S). Підключіть до роз'єму Power A і встановіть параметри:</p>
+
+            <div class="code-block">
+<span class="key">BATT_MONITOR</span>   = <span class="val">4</span>
+<span class="key">BATT_CURR_PIN</span>  = <span class="val">17</span>
+<span class="key">BATT_VOLT_PIN</span>  = <span class="val">16</span>
+<span class="key">BATT_AMP_PERVLT</span> = <span class="val">24</span>
+<span class="key">BATT_VOLT_MULT</span> = <span class="val">18</span>
+<span class="key">BATT_VLT_OFFSET</span> = <span class="val">-0.1</span>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-title">✓ DroneCAN PMU</div>
+                Якщо використовуєте DroneCAN-модуль живлення — підключайте до роз'єму Power C. Для другого монітора використовуйте параметри BATT2.
+            </div>
+
+            <h2 id="firmware">Firmware</h2>
+            <p>Завантажте прошивку для вашої версії ArduPilot:</p>
+
+            <div class="firmware-group">
+                <div class="firmware-header" onclick="toggleFirmware(this)">
+                    ArduPilot 4.7-dev <span class="chevron">▼</span>
+                </div>
+                <div class="firmware-body">
+                    <a class="firmware-link" href="images/ardupilot-4_7_0/arducopter_4.7.0-dev.apj" download>ArduCopter-4.7.0-dev</a>
+                    <a class="firmware-link" href="images/ardupilot-4_7_0/arduplane_4.7.0-dev.apj" download>ArduPlane-4.7.0-dev</a>
+                    <a class="firmware-link" href="images/ardupilot-4_7_0/ardurover_4.7.0-dev.apj" download>ArduRover-4.7.0-dev</a>
+                    <a class="firmware-link" href="images/ardupilot-4_7_0/ardusub_4.7.0-dev.apj" download>ArduSub-4.7.0-dev</a>
+                    <a class="firmware-link" href="images/ardupilot-4_7_0/blimp_4.7.0-dev.apj" download>ArduBlimp-4.7.0-dev</a>
+                </div>
+            </div>
+
+            <div class="firmware-group">
+                <div class="firmware-header" onclick="toggleFirmware(this)">
+                    ArduPilot 4.6.2 <span class="chevron">▼</span>
+                </div>
+                <div class="firmware-body">
+                    <a class="firmware-link" href="images/ardupilot-4_6_2/arducopter_4.6.2.apj" download>ArduCopter-4.6.2</a>
+                    <a class="firmware-link" href="images/ardupilot-4_6_2/arduplane_4.6.2.apj" download>ArduPlane-4.6.2</a>
+                    <a class="firmware-link" href="images/ardupilot-4_6_2/ardurover_4.6.2.apj" download>ArduRover-4.6.2</a>
+                    <a class="firmware-link" href="images/ardupilot-4_6_2/ardusub_4.6.2.apj" download>ArduSub-4.6.2</a>
+                    <a class="firmware-link" href="images/ardupilot-4_6_2/blimp_4.6.2.apj" download>ArduBlimp-4.6.2</a>
+                </div>
+            </div>
+
+            <div class="firmware-group">
+                <div class="firmware-header" onclick="toggleFirmware(this)">
+                    ArduPilot 4.5.7 <span class="chevron">▼</span>
+                </div>
+                <div class="firmware-body">
+                    <a class="firmware-link" href="images/ardupilot-4_5_7/arducopter_4.5.7.apj" download>ArduCopter-4.5.7</a>
+                    <a class="firmware-link" href="images/ardupilot-4_5_7/arduplane_4.5.7.apj" download>ArduPlane-4.5.7</a>
+                    <a class="firmware-link" href="images/ardupilot-4_5_7/ardurover_4.5.7.apj" download>ArduRover-4.5.7</a>
+                    <a class="firmware-link" href="images/ardupilot-4_5_7/ardusub_4.5.7.apj" download>ArduSub-4.5.7</a>
+                    <a class="firmware-link" href="images/ardupilot-4_5_7/blimp_4.5.7.apj" download>ArduBlimp-4.5.7</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: KIT ===== -->
+        <div class="page" id="page-kit">
+            <div class="page-label">Комплектація</div>
+            <h1>Що в комплекті</h1>
+            <p>Стандартна комплектація Atlas Control включає контролер та всі необхідні кабелі для підключення.</p>
+
+            <h2>Контролер</h2>
+            <table class="kit-table">
+                <tr><td>1×</td><td>
+                    <strong style="color:var(--white)">Польотний контролер Atlas Control</strong>
+                    <ul class="doc-list" style="margin-top:8px">
+                        <li>У захисному алюмінієвому корпусі (98 × 62 × 16 мм)</li>
+                        <li>З демпферами віброізоляції</li>
+                        <li>З лакованою платою</li>
+                        <li>З SD-карткою</li>
+                    </ul>
+                </td></tr>
+                <tr><td>1×</td><td>Аналоговий модуль живлення PMU (до 14S)</td></tr>
+            </table>
+
+            <h2>Кабелі</h2>
+            <table class="kit-table">
+                <tr><td>2×</td><td>Кабель живлення</td></tr>
+                <tr><td>2×</td><td>JST-GH 1.25мм 6-pin (двосторонній)</td></tr>
+                <tr><td>1×</td><td>JST-GH 1.25мм 3-pin</td></tr>
+                <tr><td>4×</td><td>JST-GH 1.25мм 4-pin</td></tr>
+                <tr><td>2×</td><td>JST-GH 1.25мм 6-pin</td></tr>
+                <tr><td>1×</td><td>JST-GH 1.25мм 7-pin (FTDI-кабель для Debug Port)</td></tr>
+                <tr><td>1×</td><td>JST-GH 1.25мм 10-pin</td></tr>
+                <tr><td>1×</td><td>Сервокабель</td></tr>
+            </table>
+
+            <div class="callout tip">
+                <div class="callout-title">✓ Debug Port</div>
+                FTDI-кабель підключається до порту DSU7 для системної консолі та SWD інтерфейсу.
+            </div>
+        </div>
+
+    </main>
 </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    
-      
-      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-    
-    
-      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
-      
-    
-  </body>
+
+<script>
+    function showPage(pageId, el, anchor) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById('page-' + pageId).classList.add('active');
+
+        // Update nav active states
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        if (el && el.classList.contains('nav-item')) {
+            el.classList.add('active');
+        }
+
+        // Scroll to anchor if provided
+        if (anchor) {
+            setTimeout(() => {
+                const el = document.getElementById(anchor);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close sidebar on mobile
+        if (window.innerWidth <= 768) {
+            document.getElementById('sidebar').classList.remove('open');
+        }
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function toggleFirmware(header) {
+        header.classList.toggle('open');
+        header.nextElementSibling.classList.toggle('open');
+    }
+</script>
+</body>
 </html>
