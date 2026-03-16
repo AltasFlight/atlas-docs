@@ -560,6 +560,10 @@
             <a class="nav-subitem" onclick="showPage('settings', this, 'firmware')">Firmware</a>
         </div>
         <div class="nav-section">
+            <div class="nav-section-title">Pinout</div>
+            <a class="nav-item" onclick="showPage('pinout', this)"><span class="t-uk">Розпіновка</span><span class="t-en">Pinout</span></a>
+        </div>
+        <div class="nav-section">
             <div class="nav-section-title"><span class="t-uk">Комплектація</span><span class="t-en">Kit</span></div>
             <a class="nav-item" onclick="showPage('kit', this)"><span class="t-uk">Що в комплекті</span><span class="t-en">What's in the Box</span></a>
         </div>
@@ -576,11 +580,6 @@
                 <span class="t-uk">Atlas Control — польотний контролер українського виробництва на базі процесора STM32H7 з сенсорами промислового класу. Повна сумісність з ArduPilot і PX4. Розроблений для академічних досліджень, комерційної інтеграції та оборонного застосування.</span>
                 <span class="t-en">Atlas Control is a Ukrainian-made flight controller based on the STM32H7 processor with industrial-grade sensors. Fully compatible with ArduPilot and PX4. Designed for academic research, commercial integration, and defense applications.</span>
             </p>
-
-            <div class="img-grid">
-                <img src="images/atlas-pcb-3d.png" alt="Atlas Control PCB">
-                <img src="images/atlas-in-uav.png" alt="Atlas Control in UAV">
-            </div>
 
             <h2 id="sensors"><span class="t-uk">Вбудовані сенсори</span><span class="t-en">Built-in Sensors</span></h2>
             <table class="spec-table">
@@ -732,8 +731,6 @@
                 </tbody>
             </table>
 
-            <img src="images/Frame.png" alt="Atlas Control dimensions" class="doc-img">
-
             <div class="callout warning">
                 <div class="callout-title">⚠ <span class="t-uk">Увага</span><span class="t-en">Warning</span></div>
                 <span class="t-uk">Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення або навантаження.</span>
@@ -744,6 +741,11 @@
                 <div class="callout-title">ℹ <span class="t-uk">Резервування живлення</span><span class="t-en">Power Redundancy</span></div>
                 <span class="t-uk">Atlas Control підтримує потрійну резервовану систему живлення: POWER_A, POWER_C і USB. Пріоритет: POWER_A/C → USB.</span>
                 <span class="t-en">Atlas Control supports a triple-redundant power system: POWER_A, POWER_C, and USB. Priority: POWER_A/C → USB.</span>
+            </div>
+
+            <div class="img-grid">
+                <img src="images/atlas-pcb-3d.png" alt="Atlas Control PCB">
+                <img src="images/atlas-in-uav.png" alt="Atlas Control in UAV">
             </div>
         </div>
 
@@ -917,6 +919,17 @@ PWM13(M13)=62 PWM14(M14)=63
                     <a class="firmware-link" href="images/ardupilot-4_5_7/blimp_4.5.7.apj" download>ArduBlimp-4.5.7</a>
                 </div>
             </div>
+        </div>
+
+        <!-- ===== PAGE: PINOUT ===== -->
+        <div class="page" id="page-pinout">
+            <div class="page-label">Pinout</div>
+            <h1><span class="t-uk">Розпіновка</span><span class="t-en">Pinout</span></h1>
+            <p>
+                <span class="t-uk">Схема розпіновки роз'ємів Atlas Control.</span>
+                <span class="t-en">Atlas Control connector pinout diagram.</span>
+            </p>
+            <img src="images/Frame.png" alt="Atlas Control Pinout" class="doc-img">
         </div>
 
         <!-- ===== PAGE: KIT ===== -->
