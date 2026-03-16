@@ -478,12 +478,22 @@
         .kit-table tr:hover td { background: rgba(196, 217, 78, 0.02); }
 
         /* ====== IMAGES ====== */
-        .doc-img {
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .img-grid img {
             width: 100%;
-            max-width: 100%;
             border: 1px solid var(--border);
             display: block;
-            margin: 20px 0;
+        }
+        .doc-img {
+            width: 100%;
+            border: 1px solid var(--border);
+            display: block;
+            margin: 24px 0;
         }
 
         /* ====== MOBILE ====== */
@@ -504,7 +514,7 @@
             .topbar-title, .topbar-sep { display: none; }
             .topbar { flex-wrap: nowrap; }
             .topbar-right { gap: 8px; }
-            .topbar-contact { display: none; }
+            .img-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -522,7 +532,7 @@
     <span class="topbar-title"><span class="t-uk">Документація</span><span class="t-en">Documentation</span></span>
     <div class="topbar-right">
         <a href="https://atlascontrol.pro" class="topbar-link"><span class="t-uk">← Сайт</span><span class="t-en">← Website</span></a>
-        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link topbar-contact"><span class="t-uk">Контакт</span><span class="t-en">Contact</span></a>
+        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link"><span class="t-uk">Контакт</span><span class="t-en">Contact</span></a>
         <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
     </div>
 </header>
@@ -567,9 +577,10 @@
                 <span class="t-en">Atlas Control is a Ukrainian-made flight controller based on the STM32H7 processor with industrial-grade sensors. Fully compatible with ArduPilot and PX4. Designed for academic research, commercial integration, and defense applications.</span>
             </p>
 
-            <img src="images/atlas-pcb-3d.png" alt="Atlas Control PCB" class="doc-img">
-            <img src="images/atlas-in-uav.png" alt="Atlas Control in UAV" class="doc-img">
-            <img src="images/Frame.png" alt="Atlas Control dimensions" class="doc-img">
+            <div class="img-grid">
+                <img src="images/atlas-pcb-3d.png" alt="Atlas Control PCB">
+                <img src="images/atlas-in-uav.png" alt="Atlas Control in UAV">
+            </div>
 
             <h2 id="sensors"><span class="t-uk">Вбудовані сенсори</span><span class="t-en">Built-in Sensors</span></h2>
             <table class="spec-table">
@@ -720,6 +731,8 @@
                     </tr>
                 </tbody>
             </table>
+
+            <img src="images/Frame.png" alt="Atlas Control dimensions" class="doc-img">
 
             <div class="callout warning">
                 <div class="callout-title">⚠ <span class="t-uk">Увага</span><span class="t-en">Warning</span></div>
