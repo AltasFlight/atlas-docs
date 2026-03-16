@@ -463,6 +463,38 @@
         .kit-table td:last-child { color: var(--text); }
         .kit-table tr:hover td { background: rgba(196, 217, 78, 0.02); }
 
+        /* ====== IMAGES ====== */
+        .doc-img {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid var(--border);
+            display: block;
+            margin: 20px 0;
+        }
+        .doc-img-caption {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: -12px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .img-grid-item img {
+            width: 100%;
+            border: 1px solid var(--border);
+        }
+        .img-grid-item .doc-img-caption {
+            margin-top: 6px;
+            margin-bottom: 0;
+        }
+
         /* ====== MOBILE ====== */
         @media (max-width: 768px) {
             .sidebar {
@@ -522,6 +554,10 @@
             <a class="nav-subitem" onclick="showPage('settings', this, 'firmware')">Firmware</a>
         </div>
         <div class="nav-section">
+            <div class="nav-section-title">Розпіновка</div>
+            <a class="nav-item" onclick="showPage('pinout', this)">Схеми підключення</a>
+        </div>
+        <div class="nav-section">
             <div class="nav-section-title">Комплектація</div>
             <a class="nav-item" onclick="showPage('kit', this)">Що в комплекті</a>
         </div>
@@ -535,6 +571,8 @@
             <div class="page-label">Документація</div>
             <h1>Atlas Control</h1>
             <p>Atlas Control — польотний контролер українського виробництва на базі процесора STM32H7 з сенсорами промислового класу. Повна сумісність з ArduPilot і PX4. Розроблений для академічних досліджень, комерційної інтеграції та оборонного застосування.</p>
+            <img src="images/atlas-pcb-3d.png" alt="Atlas Control" class="doc-img">
+            <img src="images/atlas-in-uav.png" alt="Atlas Control встановлений на дроні" class="doc-img">
 
             <h2 id="sensors">Вбудовані сенсори</h2>
             <table class="spec-table">
@@ -748,6 +786,16 @@ PWM13(M13)=62 PWM14(M14)=63
                     <a class="firmware-link" href="images/ardupilot-4_5_7/blimp_4.5.7.apj" download>ArduBlimp-4.5.7</a>
                 </div>
             </div>
+        </div>
+
+        <!-- ===== PAGE: PINOUT ===== -->
+        <div class="page" id="page-pinout">
+            <div class="page-label">Розпіновка</div>
+            <h1>Схеми підключення</h1>
+            <p>Повні схеми розпіновки роз'ємів Atlas Control.</p>
+
+            <img src="images/Frame.png" alt="Atlas Control — розміри та розпіновка" class="doc-img">
+            <p class="doc-img-caption">Габаритні розміри та схема роз'ємів</p>
         </div>
 
         <!-- ===== PAGE: KIT ===== -->
