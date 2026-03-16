@@ -38,6 +38,8 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        .t-en { display: none; }
+
         /* ====== TOPBAR ====== */
         .topbar {
             position: fixed;
@@ -97,6 +99,19 @@
             transition: color 0.2s;
         }
         .topbar-link:hover { color: var(--accent); }
+
+        .lang-btn {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--text-light);
+            background: none;
+            border: 1px solid rgba(196, 217, 78, 0.2);
+            padding: 4px 10px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover { color: var(--accent); border-color: var(--accent); }
 
         .hamburger {
             display: none;
@@ -183,7 +198,6 @@
         .main {
             margin-left: var(--sidebar-width);
             flex: 1;
-            max-width: 1100px;
             padding: 48px 56px 80px;
         }
 
@@ -463,38 +477,6 @@
         .kit-table td:last-child { color: var(--text); }
         .kit-table tr:hover td { background: rgba(196, 217, 78, 0.02); }
 
-        /* ====== IMAGES ====== */
-        .doc-img {
-            width: 100%;
-            max-width: 100%;
-            border: 1px solid var(--border);
-            display: block;
-            margin: 20px 0;
-        }
-        .doc-img-caption {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-light);
-            text-align: center;
-            margin-top: -12px;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
-        .img-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 20px 0;
-        }
-        .img-grid-item img {
-            width: 100%;
-            border: 1px solid var(--border);
-        }
-        .img-grid-item .doc-img-caption {
-            margin-top: 6px;
-            margin-bottom: 0;
-        }
-
         /* ====== MOBILE ====== */
         @media (max-width: 768px) {
             .sidebar {
@@ -524,10 +506,11 @@
     </button>
     <a href="https://atlascontrol.pro" class="topbar-logo">Atlas<span>Control</span></a>
     <div class="topbar-sep"></div>
-    <span class="topbar-title">Документація</span>
+    <span class="topbar-title"><span class="t-uk">Документація</span><span class="t-en">Documentation</span></span>
     <div class="topbar-right">
-        <a href="https://atlascontrol.pro" class="topbar-link">← Сайт</a>
-        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link">Контакт</a>
+        <a href="https://atlascontrol.pro" class="topbar-link"><span class="t-uk">← Сайт</span><span class="t-en">← Website</span></a>
+        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link"><span class="t-uk">Контакт</span><span class="t-en">Contact</span></a>
+        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
     </div>
 </header>
 
@@ -535,31 +518,27 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
         <div class="nav-section">
-            <div class="nav-section-title">Огляд</div>
-            <a class="nav-item active" onclick="showPage('overview', this)">Опис контролера</a>
-            <a class="nav-subitem" onclick="showPage('overview', this, 'sensors')">Сенсори</a>
-            <a class="nav-subitem" onclick="showPage('overview', this, 'interfaces')">Інтерфейси</a>
-            <a class="nav-subitem" onclick="showPage('overview', this, 'power')">Живлення</a>
-            <a class="nav-subitem" onclick="showPage('overview', this, 'imu-diff')">Різниця між моделями</a>
+            <div class="nav-section-title"><span class="t-uk">Огляд</span><span class="t-en">Overview</span></div>
+            <a class="nav-item active" onclick="showPage('overview', this)"><span class="t-uk">Опис контролера</span><span class="t-en">Controller Overview</span></a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'sensors')"><span class="t-uk">Сенсори</span><span class="t-en">Sensors</span></a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'interfaces')"><span class="t-uk">Інтерфейси</span><span class="t-en">Interfaces</span></a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'power')"><span class="t-uk">Живлення</span><span class="t-en">Power</span></a>
+            <a class="nav-subitem" onclick="showPage('overview', this, 'imu-diff')"><span class="t-uk">Різниця між моделями</span><span class="t-en">Model Comparison</span></a>
         </div>
         <div class="nav-section">
-            <div class="nav-section-title">Налаштування</div>
-            <a class="nav-item" onclick="showPage('settings', this)">Налаштування FC</a>
-            <a class="nav-subitem" onclick="showPage('settings', this, 'uart')">UART порти</a>
-            <a class="nav-subitem" onclick="showPage('settings', this, 'pwm')">PWM виходи</a>
+            <div class="nav-section-title"><span class="t-uk">Налаштування</span><span class="t-en">Configuration</span></div>
+            <a class="nav-item" onclick="showPage('settings', this)"><span class="t-uk">Налаштування FC</span><span class="t-en">FC Configuration</span></a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'uart')"><span class="t-uk">UART порти</span><span class="t-en">UART Ports</span></a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'pwm')"><span class="t-uk">PWM виходи</span><span class="t-en">PWM Outputs</span></a>
             <a class="nav-subitem" onclick="showPage('settings', this, 'gpio')">GPIO</a>
-            <a class="nav-subitem" onclick="showPage('settings', this, 'analog')">Аналогові входи</a>
-            <a class="nav-subitem" onclick="showPage('settings', this, 'rc')">RC вхід</a>
-            <a class="nav-subitem" onclick="showPage('settings', this, 'battery')">Моніторинг батареї</a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'analog')"><span class="t-uk">Аналогові входи</span><span class="t-en">Analog Inputs</span></a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'rc')"><span class="t-uk">RC вхід</span><span class="t-en">RC Input</span></a>
+            <a class="nav-subitem" onclick="showPage('settings', this, 'battery')"><span class="t-uk">Моніторинг батареї</span><span class="t-en">Battery Monitor</span></a>
             <a class="nav-subitem" onclick="showPage('settings', this, 'firmware')">Firmware</a>
         </div>
         <div class="nav-section">
-            <div class="nav-section-title">Розпіновка</div>
-            <a class="nav-item" onclick="showPage('pinout', this)">Схеми підключення</a>
-        </div>
-        <div class="nav-section">
-            <div class="nav-section-title">Комплектація</div>
-            <a class="nav-item" onclick="showPage('kit', this)">Що в комплекті</a>
+            <div class="nav-section-title"><span class="t-uk">Комплектація</span><span class="t-en">Kit</span></div>
+            <a class="nav-item" onclick="showPage('kit', this)"><span class="t-uk">Що в комплекті</span><span class="t-en">What's in the Box</span></a>
         </div>
     </aside>
 
@@ -568,28 +547,56 @@
 
         <!-- ===== PAGE: OVERVIEW ===== -->
         <div class="page active" id="page-overview">
-            <div class="page-label">Документація</div>
+            <div class="page-label"><span class="t-uk">Документація</span><span class="t-en">Documentation</span></div>
             <h1>Atlas Control</h1>
-            <p>Atlas Control — польотний контролер українського виробництва на базі процесора STM32H7 з сенсорами промислового класу. Повна сумісність з ArduPilot і PX4. Розроблений для академічних досліджень, комерційної інтеграції та оборонного застосування.</p>
-            <img src="images/atlas-pcb-3d.png" alt="Atlas Control" class="doc-img">
-            <img src="images/atlas-in-uav.png" alt="Atlas Control встановлений на дроні" class="doc-img">
+            <p>
+                <span class="t-uk">Atlas Control — польотний контролер українського виробництва на базі процесора STM32H7 з сенсорами промислового класу. Повна сумісність з ArduPilot і PX4. Розроблений для академічних досліджень, комерційної інтеграції та оборонного застосування.</span>
+                <span class="t-en">Atlas Control is a Ukrainian-made flight controller based on the STM32H7 processor with industrial-grade sensors. Fully compatible with ArduPilot and PX4. Designed for academic research, commercial integration, and defense applications.</span>
+            </p>
 
-            <h2 id="sensors">Вбудовані сенсори</h2>
+            <h2 id="sensors"><span class="t-uk">Вбудовані сенсори</span><span class="t-en">Built-in Sensors</span></h2>
             <table class="spec-table">
                 <thead>
-                    <tr><th>Сенсор</th><th>Компонент</th><th>Призначення</th></tr>
+                    <tr>
+                        <th><span class="t-uk">Сенсор</span><span class="t-en">Sensor</span></th>
+                        <th><span class="t-uk">Компонент</span><span class="t-en">Component</span></th>
+                        <th><span class="t-uk">Призначення</span><span class="t-en">Purpose</span></th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Акселерометр/Гіроскоп (основний)</td><td><strong>Залежить від моделі</strong></td><td>Основний IMU</td></tr>
-                    <tr><td>Акселерометр/Гіроскоп</td><td><strong>ICM-42688-P</strong></td><td>High-rate, для спідронів</td></tr>
-                    <tr><td>Акселерометр/Гіроскоп</td><td><strong>BMI088</strong></td><td>Вібростійкий, резервний</td></tr>
-                    <tr><td>Магнітометр</td><td><strong>RM3100</strong></td><td>Компас</td></tr>
-                    <tr><td>Барометр</td><td><strong>MS5611 ×2</strong></td><td>Висотометр (резервування)</td></tr>
+                    <tr>
+                        <td><span class="t-uk">Акселерометр/Гіроскоп (основний)</span><span class="t-en">Accelerometer/Gyroscope (primary)</span></td>
+                        <td><strong><span class="t-uk">Залежить від моделі</span><span class="t-en">Depends on model</span></strong></td>
+                        <td><span class="t-uk">Основний IMU</span><span class="t-en">Primary IMU</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Акселерометр/Гіроскоп</span><span class="t-en">Accelerometer/Gyroscope</span></td>
+                        <td><strong>ICM-42688-P</strong></td>
+                        <td><span class="t-uk">High-rate, для спідронів</span><span class="t-en">High-rate, for racers</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Акселерометр/Гіроскоп</span><span class="t-en">Accelerometer/Gyroscope</span></td>
+                        <td><strong>BMI088</strong></td>
+                        <td><span class="t-uk">Вібростійкий, резервний</span><span class="t-en">Vibration-resistant, redundant</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Магнітометр</span><span class="t-en">Magnetometer</span></td>
+                        <td><strong>RM3100</strong></td>
+                        <td><span class="t-uk">Компас</span><span class="t-en">Compass</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Барометр</span><span class="t-en">Barometer</span></td>
+                        <td><strong>MS5611 ×2</strong></td>
+                        <td><span class="t-uk">Висотометр (резервування)</span><span class="t-en">Altimeter (redundant)</span></td>
+                    </tr>
                 </tbody>
             </table>
 
-            <h2 id="imu-diff">Різниця між моделями</h2>
-            <p>Всі моделі мають однакові додаткові IMU (ICM-42688-P + BMI088). Різниця лише в основному IMU:</p>
+            <h2 id="imu-diff"><span class="t-uk">Різниця між моделями</span><span class="t-en">Model Comparison</span></h2>
+            <p>
+                <span class="t-uk">Всі моделі мають однакові додаткові IMU (ICM-42688-P + BMI088). Різниця лише в основному IMU:</span>
+                <span class="t-en">All models share the same secondary IMUs (ICM-42688-P + BMI088). The only difference is the primary IMU:</span>
+            </p>
             <div class="imu-grid">
                 <div class="imu-card">
                     <div class="imu-card-model">Control</div>
@@ -617,52 +624,105 @@
                 </div>
             </div>
 
-            <h2 id="interfaces">Інтерфейси</h2>
+            <h2 id="interfaces"><span class="t-uk">Інтерфейси</span><span class="t-en">Interfaces</span></h2>
             <table class="spec-table">
-                <thead><tr><th>Інтерфейс</th><th>Деталі</th></tr></thead>
+                <thead><tr>
+                    <th><span class="t-uk">Інтерфейс</span><span class="t-en">Interface</span></th>
+                    <th><span class="t-uk">Деталі</span><span class="t-en">Details</span></th>
+                </tr></thead>
                 <tbody>
-                    <tr><td>PWM виходи</td><td><strong>14</strong> (12 з DShot)</td></tr>
-                    <tr><td>RC вхід</td><td><strong>SBUS / CPPM / DSM</strong></td></tr>
-                    <tr><td>RSSI</td><td><strong>Аналоговий / PWM</strong></td></tr>
-                    <tr><td>GPS порти</td><td><strong>2</strong> (GPS + UART4)</td></tr>
-                    <tr><td>I2C</td><td><strong>6 шин</strong> (4 спеціалізовані)</td></tr>
-                    <tr><td>CAN Bus</td><td><strong>2 порти</strong></td></tr>
-                    <tr><td>Живлення</td><td><strong>Power A</strong> (ADC) + <strong>Power C</strong> (UAVCAN)</td></tr>
-                    <tr><td>ADC</td><td><strong>1 вхід</strong></td></tr>
-                    <tr><td>USB</td><td><strong>1 порт</strong></td></tr>
+                    <tr>
+                        <td><span class="t-uk">PWM виходи</span><span class="t-en">PWM Outputs</span></td>
+                        <td><strong>14</strong> <span class="t-uk">(12 з DShot)</span><span class="t-en">(12 with DShot)</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">RC вхід</span><span class="t-en">RC Input</span></td>
+                        <td><strong>SBUS / CPPM / DSM</strong></td>
+                    </tr>
+                    <tr>
+                        <td>RSSI</td>
+                        <td><strong><span class="t-uk">Аналоговий / PWM</span><span class="t-en">Analog / PWM</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">GPS порти</span><span class="t-en">GPS Ports</span></td>
+                        <td><strong>2</strong> (GPS + UART4)</td>
+                    </tr>
+                    <tr>
+                        <td>I2C</td>
+                        <td><strong>6 <span class="t-uk">шин</span><span class="t-en">buses</span></strong> <span class="t-uk">(4 спеціалізовані)</span><span class="t-en">(4 dedicated)</span></td>
+                    </tr>
+                    <tr>
+                        <td>CAN Bus</td>
+                        <td><strong>2 <span class="t-uk">порти</span><span class="t-en">ports</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Живлення</span><span class="t-en">Power</span></td>
+                        <td><strong>Power A</strong> (ADC) + <strong>Power C</strong> (UAVCAN)</td>
+                    </tr>
+                    <tr>
+                        <td>ADC</td>
+                        <td><strong>1 <span class="t-uk">вхід</span><span class="t-en">input</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td>USB</td>
+                        <td><strong>1 <span class="t-uk">порт</span><span class="t-en">port</span></strong></td>
+                    </tr>
                 </tbody>
             </table>
 
-            <h2 id="power">Система живлення</h2>
+            <h2 id="power"><span class="t-uk">Система живлення</span><span class="t-en">Power System</span></h2>
             <table class="spec-table">
-                <thead><tr><th>Параметр</th><th>Значення</th></tr></thead>
+                <thead><tr>
+                    <th><span class="t-uk">Параметр</span><span class="t-en">Parameter</span></th>
+                    <th><span class="t-uk">Значення</span><span class="t-en">Value</span></th>
+                </tr></thead>
                 <tbody>
-                    <tr><td>Основне живлення</td><td><strong>4.5 – 5.4 В</strong></td></tr>
-                    <tr><td>USB вхід</td><td><strong>4.75 – 5.25 В</strong></td></tr>
-                    <tr><td>Вхід сервоприводів</td><td><strong>0 – 10 В</strong></td></tr>
-                    <tr><td>Розміри</td><td><strong>98 × 62 × 16 мм</strong></td></tr>
-                    <tr><td>Вага</td><td><strong>58 г</strong></td></tr>
-                    <tr><td>Температура</td><td><strong>−20 … +85 °C</strong></td></tr>
+                    <tr>
+                        <td><span class="t-uk">Основне живлення</span><span class="t-en">Main power</span></td>
+                        <td><strong>4.5 – 5.4 <span class="t-uk">В</span><span class="t-en">V</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">USB вхід</span><span class="t-en">USB input</span></td>
+                        <td><strong>4.75 – 5.25 <span class="t-uk">В</span><span class="t-en">V</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Вхід сервоприводів</span><span class="t-en">Servo rail input</span></td>
+                        <td><strong>0 – 10 <span class="t-uk">В</span><span class="t-en">V</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Розміри</span><span class="t-en">Dimensions</span></td>
+                        <td><strong>98 × 62 × 16 <span class="t-uk">мм</span><span class="t-en">mm</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Вага</span><span class="t-en">Weight</span></td>
+                        <td><strong>58 <span class="t-uk">г</span><span class="t-en">g</span></strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Температура</span><span class="t-en">Temperature</span></td>
+                        <td><strong>−20 … +85 °C</strong></td>
+                    </tr>
                 </tbody>
             </table>
 
             <div class="callout warning">
-                <div class="callout-title">⚠ Увага</div>
-                Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення або навантаження.
+                <div class="callout-title">⚠ <span class="t-uk">Увага</span><span class="t-en">Warning</span></div>
+                <span class="t-uk">Порт RCIN призначений лише для живлення RC-приймача і не може використовуватись для підключення живлення або навантаження.</span>
+                <span class="t-en">The RCIN port is designed only to power the RC receiver and must not be used to connect power or external loads.</span>
             </div>
 
             <div class="callout note">
-                <div class="callout-title">ℹ Резервування живлення</div>
-                Atlas Control підтримує потрійну резервовану систему живлення: POWER_A, POWER_C і USB. Пріоритет: POWER_A/C → USB.
+                <div class="callout-title">ℹ <span class="t-uk">Резервування живлення</span><span class="t-en">Power Redundancy</span></div>
+                <span class="t-uk">Atlas Control підтримує потрійну резервовану систему живлення: POWER_A, POWER_C і USB. Пріоритет: POWER_A/C → USB.</span>
+                <span class="t-en">Atlas Control supports a triple-redundant power system: POWER_A, POWER_C, and USB. Priority: POWER_A/C → USB.</span>
             </div>
         </div>
 
         <!-- ===== PAGE: SETTINGS ===== -->
         <div class="page" id="page-settings">
-            <div class="page-label">Налаштування</div>
-            <h1>Налаштування FC</h1>
+            <div class="page-label"><span class="t-uk">Налаштування</span><span class="t-en">Configuration</span></div>
+            <h1><span class="t-uk">Налаштування FC</span><span class="t-en">FC Configuration</span></h1>
 
-            <h2 id="uart">Базовий порядок UART</h2>
+            <h2 id="uart"><span class="t-uk">Базовий порядок UART</span><span class="t-en">Default UART Mapping</span></h2>
             <div class="code-block">
 <span class="key">SERIAL0</span> = console    = <span class="val">USB</span>           <span class="comment">// MAVLink2</span>
 <span class="key">SERIAL1</span> = Telemetry1 = <span class="val">USART2</span>        <span class="comment">// MAVLink2 default, DMA</span>
@@ -671,31 +731,62 @@
 <span class="key">SERIAL4</span> = GPS2       = <span class="val">UART4</span>
 <span class="key">SERIAL6</span> = USER       = <span class="val">UART7</span>
             </div>
-            <p>Серійні протоколи можна налаштовувати відповідно до власних уподобань — порти адаптуються для різних периферійних пристроїв.</p>
+            <p>
+                <span class="t-uk">Серійні протоколи можна налаштовувати відповідно до власних уподобань — порти адаптуються для різних периферійних пристроїв.</span>
+                <span class="t-en">Serial protocols are fully configurable — ports adapt to various peripheral devices.</span>
+            </p>
 
-            <h2 id="pwm">PWM виходи</h2>
-            <p>Контролер підтримує до 14 PWM-виходів. Усі 14 каналів підтримують стандартний PWM. Канали 1–12 також підтримують DShot, канали 13–14 — тільки PWM (без DMA).</p>
+            <h2 id="pwm"><span class="t-uk">PWM виходи</span><span class="t-en">PWM Outputs</span></h2>
+            <p>
+                <span class="t-uk">Контролер підтримує до 14 PWM-виходів. Усі 14 каналів підтримують стандартний PWM. Канали 1–12 також підтримують DShot, канали 13–14 — тільки PWM (без DMA).</span>
+                <span class="t-en">The controller supports up to 14 PWM outputs. All 14 channels support standard PWM. Channels 1–12 also support DShot; channels 13–14 support PWM only (no DMA).</span>
+            </p>
 
-            <h3>Групування виходів</h3>
+            <h3><span class="t-uk">Групування виходів</span><span class="t-en">Output Groups</span></h3>
             <table class="spec-table">
-                <thead><tr><th>Група</th><th>Виходи</th><th>Протоколи</th></tr></thead>
+                <thead><tr>
+                    <th><span class="t-uk">Група</span><span class="t-en">Group</span></th>
+                    <th><span class="t-uk">Виходи</span><span class="t-en">Outputs</span></th>
+                    <th><span class="t-uk">Протоколи</span><span class="t-en">Protocols</span></th>
+                </tr></thead>
                 <tbody>
-                    <tr><td>Група 1</td><td><strong>1, 2, 3, 4</strong></td><td>PWM + DShot + Bi-directional DShot</td></tr>
-                    <tr><td>Група 2</td><td><strong>5, 6, 7, 8</strong></td><td>PWM + DShot</td></tr>
-                    <tr><td>Група 3</td><td><strong>9, 10, 11, 12</strong></td><td>PWM + DShot</td></tr>
-                    <tr><td>Група 4</td><td><strong>13, 14</strong></td><td>PWM only (без DMA)</td></tr>
+                    <tr>
+                        <td><span class="t-uk">Група</span><span class="t-en">Group</span> 1</td>
+                        <td><strong>1, 2, 3, 4</strong></td>
+                        <td>PWM + DShot + Bi-directional DShot</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Група</span><span class="t-en">Group</span> 2</td>
+                        <td><strong>5, 6, 7, 8</strong></td>
+                        <td>PWM + DShot</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Група</span><span class="t-en">Group</span> 3</td>
+                        <td><strong>9, 10, 11, 12</strong></td>
+                        <td>PWM + DShot</td>
+                    </tr>
+                    <tr>
+                        <td><span class="t-uk">Група</span><span class="t-en">Group</span> 4</td>
+                        <td><strong>13, 14</strong></td>
+                        <td>PWM only <span class="t-uk">(без DMA)</span><span class="t-en">(no DMA)</span></td>
+                    </tr>
                 </tbody>
             </table>
 
             <div class="callout warning">
-                <div class="callout-title">⚠ Важливо</div>
-                Всі виходи в межах однієї групи повинні використовувати однакову частоту та протокол. Якщо хоч один канал у групі використовує DShot — всі канали цієї групи також мають працювати на DShot.
+                <div class="callout-title">⚠ <span class="t-uk">Важливо</span><span class="t-en">Important</span></div>
+                <span class="t-uk">Всі виходи в межах однієї групи повинні використовувати однакову частоту та протокол. Якщо хоч один канал у групі використовує DShot — всі канали цієї групи також мають працювати на DShot.</span>
+                <span class="t-en">All outputs within a group must use the same rate and protocol. If any channel in a group uses DShot — all channels in that group must also use DShot.</span>
             </div>
 
             <h2 id="gpio">GPIOs</h2>
-            <p>Всі 14 виходів можна використовувати як GPIO (реле, кнопки, RPM тощо). Для цього встановіть <code style="font-family:var(--mono); color:var(--accent); font-size:12px;">SERVOx_FUNCTION = -1</code>.</p>
+            <p>
+                <span class="t-uk">Всі 14 виходів можна використовувати як GPIO (реле, кнопки, RPM тощо). Для цього встановіть</span>
+                <span class="t-en">All 14 outputs can be used as GPIO (relays, buttons, RPM, etc.). Set</span>
+                <code style="font-family:var(--mono); color:var(--accent); font-size:12px;">SERVOx_FUNCTION = -1</code>.
+            </p>
 
-            <h3>Нумерація GPIO (ArduPilot)</h3>
+            <h3><span class="t-uk">Нумерація GPIO (ArduPilot)</span><span class="t-en">GPIO Numbers (ArduPilot)</span></h3>
             <div class="code-block">
 PWM1(M1)=50  PWM2(M2)=51  PWM3(M3)=52   PWM4(M4)=53
 PWM5(M5)=54  PWM6(M6)=55  PWM7(M7)=56   PWM8(M8)=57
@@ -703,17 +794,20 @@ PWM9(M9)=58  PWM10(M10)=59 PWM11(M11)=60 PWM12(M12)=61
 PWM13(M13)=62 PWM14(M14)=63
             </div>
 
-            <h2 id="analog">Аналогові входи</h2>
+            <h2 id="analog"><span class="t-uk">Аналогові входи</span><span class="t-en">Analog Inputs</span></h2>
             <div class="code-block">
 <span class="key">ADC Pin18</span> → ADC 6.6V Sense
 <span class="key">ADC Pin4</span>  → ADC 3.3V Sense
 <span class="key">Analog 3.3V RSSI</span> input pin = 6
             </div>
 
-            <h2 id="rc">Вхід RC</h2>
-            <p>Пін RCIN підтримує всі RC-протоколи ArduPilot, окрім CRSF/ELRS та SRXL2 — вони потребують UART-з'єднання. Для CRSF та телеметрії FPort використовуйте SERIAL6 (UART7).</p>
+            <h2 id="rc"><span class="t-uk">Вхід RC</span><span class="t-en">RC Input</span></h2>
+            <p>
+                <span class="t-uk">Пін RCIN підтримує всі RC-протоколи ArduPilot, окрім CRSF/ELRS та SRXL2 — вони потребують UART-з'єднання. Для CRSF та телеметрії FPort використовуйте SERIAL6 (UART7).</span>
+                <span class="t-en">The RCIN pin supports all ArduPilot RC protocols except CRSF/ELRS and SRXL2 — those require a UART connection. For CRSF and FPort telemetry use SERIAL6 (UART7).</span>
+            </p>
 
-            <h3>Налаштування SERIAL6 для RC</h3>
+            <h3><span class="t-uk">Налаштування SERIAL6 для RC</span><span class="t-en">SERIAL6 Configuration for RC</span></h3>
             <div class="code-block">
 <span class="comment">// FPort</span>
 <span class="key">SERIAL6_PROTOCOL</span> = <span class="val">23</span>
@@ -723,13 +817,16 @@ PWM13(M13)=62 PWM14(M14)=63
 <span class="key">SERIAL6_PROTOCOL</span> = <span class="val">23</span>
 <span class="key">SERIAL6_OPTIONS</span>  = <span class="val">0</span>
 
-<span class="comment">// SRXL2 (тільки TX пін приймача)</span>
+<span class="comment">// SRXL2 (<span class="t-uk">тільки TX пін приймача</span><span class="t-en">receiver TX pin only</span>)</span>
 <span class="key">SERIAL6_PROTOCOL</span> = <span class="val">23</span>
 <span class="key">SERIAL6_OPTIONS</span>  = <span class="val">4</span>
             </div>
 
-            <h2 id="battery">Моніторинг батареї</h2>
-            <p>В комплекті постачається аналоговий PMU (до 14S). Підключіть до роз'єму Power A і встановіть параметри:</p>
+            <h2 id="battery"><span class="t-uk">Моніторинг батареї</span><span class="t-en">Battery Monitor</span></h2>
+            <p>
+                <span class="t-uk">В комплекті постачається аналоговий PMU (до 14S). Підключіть до роз'єму Power A і встановіть параметри:</span>
+                <span class="t-en">An analog PMU (up to 14S) is included. Connect to the Power A port and set the parameters:</span>
+            </p>
 
             <div class="code-block">
 <span class="key">BATT_MONITOR</span>   = <span class="val">4</span>
@@ -742,11 +839,15 @@ PWM13(M13)=62 PWM14(M14)=63
 
             <div class="callout tip">
                 <div class="callout-title">✓ DroneCAN PMU</div>
-                Якщо використовуєте DroneCAN-модуль живлення — підключайте до роз'єму Power C. Для другого монітора використовуйте параметри BATT2.
+                <span class="t-uk">Якщо використовуєте DroneCAN-модуль живлення — підключайте до роз'єму Power C. Для другого монітора використовуйте параметри BATT2.</span>
+                <span class="t-en">If using a DroneCAN power module — connect to Power C. For a second monitor use the BATT2 parameters.</span>
             </div>
 
             <h2 id="firmware">Firmware</h2>
-            <p>Завантажте прошивку для вашої версії ArduPilot:</p>
+            <p>
+                <span class="t-uk">Завантажте прошивку для вашої версії ArduPilot:</span>
+                <span class="t-en">Download firmware for your ArduPilot version:</span>
+            </p>
 
             <div class="firmware-group">
                 <div class="firmware-header" onclick="toggleFirmware(this)">
@@ -788,51 +889,45 @@ PWM13(M13)=62 PWM14(M14)=63
             </div>
         </div>
 
-        <!-- ===== PAGE: PINOUT ===== -->
-        <div class="page" id="page-pinout">
-            <div class="page-label">Розпіновка</div>
-            <h1>Схеми підключення</h1>
-            <p>Повні схеми розпіновки роз'ємів Atlas Control.</p>
-
-            <img src="images/Frame.png" alt="Atlas Control — розміри та розпіновка" class="doc-img">
-            <p class="doc-img-caption">Габаритні розміри та схема роз'ємів</p>
-        </div>
-
         <!-- ===== PAGE: KIT ===== -->
         <div class="page" id="page-kit">
-            <div class="page-label">Комплектація</div>
-            <h1>Що в комплекті</h1>
-            <p>Стандартна комплектація Atlas Control включає контролер та всі необхідні кабелі для підключення.</p>
+            <div class="page-label"><span class="t-uk">Комплектація</span><span class="t-en">Kit Contents</span></div>
+            <h1><span class="t-uk">Що в комплекті</span><span class="t-en">What's in the Box</span></h1>
+            <p>
+                <span class="t-uk">Стандартна комплектація Atlas Control включає контролер та всі необхідні кабелі для підключення.</span>
+                <span class="t-en">Standard Atlas Control kit includes the controller and all necessary connection cables.</span>
+            </p>
 
-            <h2>Контролер</h2>
+            <h2><span class="t-uk">Контролер</span><span class="t-en">Controller</span></h2>
             <table class="kit-table">
                 <tr><td>1×</td><td>
-                    <strong style="color:var(--white)">Польотний контролер Atlas Control</strong>
+                    <strong style="color:var(--white)"><span class="t-uk">Польотний контролер Atlas Control</span><span class="t-en">Atlas Control Flight Controller</span></strong>
                     <ul class="doc-list" style="margin-top:8px">
-                        <li>У захисному алюмінієвому корпусі (98 × 62 × 16 мм)</li>
-                        <li>З демпферами віброізоляції</li>
-                        <li>З лакованою платою</li>
-                        <li>З SD-карткою</li>
+                        <li><span class="t-uk">У захисному алюмінієвому корпусі (98 × 62 × 16 мм)</span><span class="t-en">In protective aluminum enclosure (98 × 62 × 16 mm)</span></li>
+                        <li><span class="t-uk">З демпферами віброізоляції</span><span class="t-en">With vibration dampeners</span></li>
+                        <li><span class="t-uk">З лакованою платою</span><span class="t-en">With conformal-coated PCB</span></li>
+                        <li><span class="t-uk">З SD-карткою</span><span class="t-en">With SD card</span></li>
                     </ul>
                 </td></tr>
-                <tr><td>1×</td><td>Аналоговий модуль живлення PMU (до 14S)</td></tr>
+                <tr><td>1×</td><td><span class="t-uk">Аналоговий модуль живлення PMU (до 14S)</span><span class="t-en">Analog power module PMU (up to 14S)</span></td></tr>
             </table>
 
-            <h2>Кабелі</h2>
+            <h2><span class="t-uk">Кабелі</span><span class="t-en">Cables</span></h2>
             <table class="kit-table">
-                <tr><td>2×</td><td>Кабель живлення</td></tr>
-                <tr><td>2×</td><td>JST-GH 1.25мм 6-pin (двосторонній)</td></tr>
-                <tr><td>1×</td><td>JST-GH 1.25мм 3-pin</td></tr>
-                <tr><td>4×</td><td>JST-GH 1.25мм 4-pin</td></tr>
-                <tr><td>2×</td><td>JST-GH 1.25мм 6-pin</td></tr>
-                <tr><td>1×</td><td>JST-GH 1.25мм 7-pin (FTDI-кабель для Debug Port)</td></tr>
-                <tr><td>1×</td><td>JST-GH 1.25мм 10-pin</td></tr>
-                <tr><td>1×</td><td>Сервокабель</td></tr>
+                <tr><td>2×</td><td><span class="t-uk">Кабель живлення</span><span class="t-en">Power cable</span></td></tr>
+                <tr><td>2×</td><td>JST-GH 1.25<span class="t-uk">мм</span><span class="t-en">mm</span> 6-pin (<span class="t-uk">двосторонній</span><span class="t-en">reversible</span>)</td></tr>
+                <tr><td>1×</td><td>JST-GH 1.25<span class="t-uk">мм</span><span class="t-en">mm</span> 3-pin</td></tr>
+                <tr><td>4×</td><td>JST-GH 1.25<span class="t-uk">мм</span><span class="t-en">mm</span> 4-pin</td></tr>
+                <tr><td>2×</td><td>JST-GH 1.25<span class="t-uk">мм</span><span class="t-en">mm</span> 6-pin</td></tr>
+                <tr><td>1×</td><td>JST-GH 1.25<span class="t-uk">мм</span><span class="t-en">mm</span> 7-pin (<span class="t-uk">FTDI-кабель для Debug Port</span><span class="t-en">FTDI cable for Debug Port</span>)</td></tr>
+                <tr><td>1×</td><td>JST-GH 1.25<span class="t-uk">мм</span><span class="t-en">mm</span> 10-pin</td></tr>
+                <tr><td>1×</td><td><span class="t-uk">Сервокабель</span><span class="t-en">Servo cable</span></td></tr>
             </table>
 
             <div class="callout tip">
                 <div class="callout-title">✓ Debug Port</div>
-                FTDI-кабель підключається до порту DSU7 для системної консолі та SWD інтерфейсу.
+                <span class="t-uk">FTDI-кабель підключається до порту DSU7 для системної консолі та SWD інтерфейсу.</span>
+                <span class="t-en">The FTDI cable connects to the DSU7 port for the system console and SWD interface.</span>
             </div>
         </div>
 
@@ -841,27 +936,23 @@ PWM13(M13)=62 PWM14(M14)=63
 
 <script>
     function showPage(pageId, el, anchor) {
-        // Hide all pages
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById('page-' + pageId).classList.add('active');
 
-        // Update nav active states
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
         if (el && el.classList.contains('nav-item')) {
             el.classList.add('active');
         }
 
-        // Scroll to anchor if provided
         if (anchor) {
             setTimeout(() => {
-                const el = document.getElementById(anchor);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const target = document.getElementById(anchor);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 50);
         } else {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Close sidebar on mobile
         if (window.innerWidth <= 768) {
             document.getElementById('sidebar').classList.remove('open');
         }
@@ -874,6 +965,16 @@ PWM13(M13)=62 PWM14(M14)=63
     function toggleFirmware(header) {
         header.classList.toggle('open');
         header.nextElementSibling.classList.toggle('open');
+    }
+
+    let currentLang = 'uk';
+    function toggleLang() {
+        currentLang = currentLang === 'uk' ? 'en' : 'uk';
+        document.documentElement.lang = currentLang;
+        document.querySelectorAll('.t-uk').forEach(el => el.style.display = currentLang === 'uk' ? '' : 'none');
+        document.querySelectorAll('.t-en').forEach(el => el.style.display = currentLang === 'en' ? '' : 'none');
+        document.getElementById('lang-btn').textContent = currentLang === 'uk' ? 'EN' : 'UA';
+        document.title = currentLang === 'uk' ? 'Atlas Control — Документація' : 'Atlas Control — Documentation';
     }
 </script>
 </body>
