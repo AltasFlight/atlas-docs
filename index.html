@@ -493,6 +493,9 @@
             .imu-grid { grid-template-columns: repeat(2, 1fr); }
             h1 { font-size: 28px; }
             .topbar-title, .topbar-sep { display: none; }
+            .topbar { flex-wrap: nowrap; }
+            .topbar-right { gap: 8px; }
+            .topbar-contact { display: none; }
         }
     </style>
 </head>
@@ -510,7 +513,7 @@
     <span class="topbar-title"><span class="t-uk">Документація</span><span class="t-en">Documentation</span></span>
     <div class="topbar-right">
         <a href="https://atlascontrol.pro" class="topbar-link"><span class="t-uk">← Сайт</span><span class="t-en">← Website</span></a>
-        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link"><span class="t-uk">Контакт</span><span class="t-en">Contact</span></a>
+        <a href="mailto:o.a.ivashyna@gmail.com" class="topbar-link topbar-contact"><span class="t-uk">Контакт</span><span class="t-en">Contact</span></a>
         <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
     </div>
 </header>
