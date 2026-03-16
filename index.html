@@ -477,6 +477,15 @@
         .kit-table td:last-child { color: var(--text); }
         .kit-table tr:hover td { background: rgba(196, 217, 78, 0.02); }
 
+        /* ====== IMAGES ====== */
+        .doc-img {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid var(--border);
+            display: block;
+            margin: 20px 0;
+        }
+
         /* ====== MOBILE ====== */
         @media (max-width: 768px) {
             .sidebar {
@@ -557,6 +566,10 @@
                 <span class="t-uk">Atlas Control — польотний контролер українського виробництва на базі процесора STM32H7 з сенсорами промислового класу. Повна сумісність з ArduPilot і PX4. Розроблений для академічних досліджень, комерційної інтеграції та оборонного застосування.</span>
                 <span class="t-en">Atlas Control is a Ukrainian-made flight controller based on the STM32H7 processor with industrial-grade sensors. Fully compatible with ArduPilot and PX4. Designed for academic research, commercial integration, and defense applications.</span>
             </p>
+
+            <img src="images/atlas-pcb-3d.png" alt="Atlas Control PCB" class="doc-img">
+            <img src="images/atlas-in-uav.png" alt="Atlas Control in UAV" class="doc-img">
+            <img src="images/Frame.png" alt="Atlas Control dimensions" class="doc-img">
 
             <h2 id="sensors"><span class="t-uk">Вбудовані сенсори</span><span class="t-en">Built-in Sensors</span></h2>
             <table class="spec-table">
