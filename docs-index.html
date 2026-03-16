@@ -975,8 +975,8 @@ PWM13(M13)=62 PWM14(M14)=63
     function toggleLang() {
         currentLang = currentLang === 'uk' ? 'en' : 'uk';
         document.documentElement.lang = currentLang;
-        document.querySelectorAll('.t-uk').forEach(el => el.style.display = currentLang === 'uk' ? '' : 'none');
-        document.querySelectorAll('.t-en').forEach(el => el.style.display = currentLang === 'en' ? '' : 'none');
+        document.querySelectorAll('.t-uk').forEach(el => el.style.display = currentLang === 'uk' ? 'inline' : 'none');
+        document.querySelectorAll('.t-en').forEach(el => el.style.display = currentLang === 'en' ? 'inline' : 'none');
         document.getElementById('lang-btn').textContent = currentLang === 'uk' ? 'EN' : 'UA';
         document.title = currentLang === 'uk' ? 'Atlas Control — Документація' : 'Atlas Control — Documentation';
     }
