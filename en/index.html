@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview — Atlas Control</title>
+<meta name="description" content="Atlas Control flight controller: sensors, interfaces, power and the difference between models.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/index.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Documentation</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Website</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Contact</a>
+    <a class="lang-btn" href="../uk/index.html">UK</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Documentation</div>
+        <a class="nav-item active" href="index.html">Overview</a>
+        <a class="nav-item" href="pinout.html">Pinout</a>
+        <a class="nav-item" href="quickstart.html">Quick Start</a>
+        <a class="nav-item" href="config.html">Configuration</a>
+        <a class="nav-item" href="firmware.html">Firmware</a>
+        <a class="nav-item" href="kit.html">Kit Contents</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Overview</h1>
+<p>Atlas Control is a Ukrainian-made flight controller built around the STM32H743XIH6
+processor with industrial-grade sensors. ArduPilot compatible. Designed for academic
+research, commercial integration and defence applications.</p>
+
+<h2>Three models</h2>
+<p>All three boards are identical in connectors, power and pinout. The only difference
+is the primary inertial sensor on the SPI1 bus.</p>
+<div class="table-scroll">
+<table class="spec-table model-table">
+<tr><th></th><th>Atlas Control</th><th>Atlas Control Plus</th><th>Atlas Control Pro</th></tr>
+<tr><td>Processor</td><td>STM32H743XIH6</td><td>STM32H743XIH6</td><td>STM32H743XIH6</td></tr>
+<tr><td><strong>Primary IMU</strong> (SPI1)</td><td class="yes">ICM-42688-P</td><td class="yes">Murata SCH16T</td><td class="yes">ADIS16470</td></tr>
+<tr><td>Second IMU (SPI6)</td><td>ICM-42688-P</td><td>ICM-42688-P</td><td>ICM-42688-P</td></tr>
+<tr><td>Third IMU (SPI4)</td><td>BMI088</td><td>BMI088</td><td>BMI088</td></tr>
+<tr><td>Barometer</td><td>MS5611 ×2</td><td>MS5611 ×2</td><td>MS5611 ×2</td></tr>
+<tr><td>Compass</td><td>RM3100</td><td>RM3100</td><td>RM3100</td></tr>
+<tr><td>IMU heater</td><td class="yes">yes</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+</table>
+</div>
+<div class="callout note"><div class="callout-title">Which model to choose</div>
+<strong>Control</strong> — the baseline, with two mutually redundant ICM-42688-P units.
+<strong>Control Plus</strong> — Murata SCH16T, an industrial sensor with high stability
+against vibration and temperature.
+<strong>Control Pro</strong> — ADIS16470, a tactical-grade inertial module with
+substantially lower gyro drift; the choice for long flights and GNSS-denied operation.</div>
+
+<h2>Built-in sensors</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Sensor</th><th>Component</th><th>Bus</th><th>Purpose</th></tr>
+<tr><td>Accelerometer / gyroscope</td><td>ICM-42688-P <span class="na">(Control)</span><br>Murata SCH16T <span class="na">(Plus)</span><br>ADIS16470 <span class="na">(Pro)</span></td><td>SPI1</td><td>Primary IMU</td></tr>
+<tr><td>Accelerometer / gyroscope</td><td>ICM-42688-P</td><td>SPI6</td><td>High-rate, redundant</td></tr>
+<tr><td>Accelerometer / gyroscope</td><td>BMI088</td><td>SPI4</td><td>Vibration-resistant, redundant</td></tr>
+<tr><td>Magnetometer</td><td>RM3100</td><td>SPI2</td><td>Internal compass</td></tr>
+<tr><td>Barometer</td><td>MS5611 ×2</td><td>SPI4, SPI6</td><td>Altimeter, redundant</td></tr>
+<tr><td>Non-volatile storage</td><td>FRAM FM25V05</td><td>SPI2</td><td>Parameter storage</td></tr>
+</table>
+</div>
+<div class="callout tip"><div class="callout-title">Sensor orientation</div>
+Sensor rotation is handled in firmware. Mount the board arrow forward —
+there is no need to change <code>AHRS_ORIENTATION</code>.</div>
+
+<h2>Interfaces</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Interface</th><th>Count</th><th>Details</th></tr>
+<tr><td>Serial ports</td><td>9</td><td>SERIAL0–SERIAL8: 7 UARTs + 2 USB</td></tr>
+<tr><td>PWM outputs</td><td>14</td><td>channels 1–12 support DShot</td></tr>
+<tr><td>RC input</td><td>1</td><td>SBUS / CPPM / DSM on the servo rail</td></tr>
+<tr><td>GPS ports</td><td>2</td><td>GPS&amp;SAFETY (SERIAL3) and UART4 (SERIAL4)</td></tr>
+<tr><td>I2C</td><td>4</td><td>all brought out to connectors</td></tr>
+<tr><td>CAN bus</td><td>2</td><td>DroneCAN</td></tr>
+<tr><td>Power ports</td><td>2</td><td>Power A (analog), Power C (DroneCAN)</td></tr>
+<tr><td>Analog inputs</td><td>2</td><td>3.3 V and 6.6 V, plus a separate RSSI input</td></tr>
+<tr><td>SPI</td><td>1</td><td>external SPI5 with two chip selects</td></tr>
+<tr><td>USB</td><td>1</td><td>USB-C</td></tr>
+</table>
+</div>
+<p>Also included: microSD slot, safety switch, buzzer, RGB status LED.</p>
+
+<h2>Power</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Parameter</th><th>Value</th></tr>
+<tr><td>Main power</td><td>4.5 – 5.4 V</td></tr>
+<tr><td>USB input</td><td>4.75 – 5.25 V</td></tr>
+<tr><td>Servo rail input</td><td>0 – 10 V</td></tr>
+<tr><td>Dimensions</td><td>98 × 62 × 16 mm</td></tr>
+<tr><td>Weight</td><td>58 g</td></tr>
+<tr><td>Operating temperature</td><td>−20 … +85 °C</td></tr>
+</table>
+</div>
+<div class="callout note"><div class="callout-title">Power redundancy</div>
+Triple redundancy is supported: POWER_A, POWER_C and USB.
+Priority: POWER_A / POWER_C → USB.</div>
+<div class="callout warning"><div class="callout-title">Warning</div>
+The servo rail is isolated: the controller <strong>does not power</strong> servos and
+<strong>is not powered</strong> by them. The board must be supplied from POWER_A,
+POWER_C or USB. Servo rail voltage is not measured.</div>
+<div class="callout warning"><div class="callout-title">RCIN port</div>
+Intended only to power the RC receiver. Do not connect external power or loads to it.</div>
+
+<h2>The board</h2>
+<div class="img-grid">
+  <img src="../images/atlas-pcb-3d.png" alt="Atlas Control board">
+  <img src="../images/atlas-in-uav.png" alt="Atlas Control installed in a UAV">
+</div>
+<nav class="next-links">
+  <a href="pinout.html">Pinout →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

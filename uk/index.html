@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Огляд — Atlas Control</title>
+<meta name="description" content="Польотний контролер Atlas Control: сенсори, інтерфейси, живлення, різниця між моделями.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/index.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Документація</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Сайт</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Контакт</a>
+    <a class="lang-btn" href="../en/index.html">EN</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Документація</div>
+        <a class="nav-item active" href="index.html">Огляд</a>
+        <a class="nav-item" href="pinout.html">Розпіновка</a>
+        <a class="nav-item" href="quickstart.html">Швидкий старт</a>
+        <a class="nav-item" href="config.html">Налаштування</a>
+        <a class="nav-item" href="firmware.html">Прошивка</a>
+        <a class="nav-item" href="kit.html">Комплектація</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Огляд</h1>
+<p>Atlas Control — польотний контролер українського виробництва на базі процесора
+STM32H743XIH6 з сенсорами промислового класу. Сумісний з ArduPilot. Розроблений для
+академічних досліджень, комерційної інтеграції та оборонного застосування.</p>
+
+<h2>Три моделі</h2>
+<p>Усі три плати ідентичні за роз'ємами, живленням і розпіновкою. Різниця — лише
+в основному інерціальному сенсорі на шині SPI1.</p>
+<div class="table-scroll">
+<table class="spec-table model-table">
+<tr><th></th><th>Atlas Control</th><th>Atlas Control Plus</th><th>Atlas Control Pro</th></tr>
+<tr><td>Процесор</td><td>STM32H743XIH6</td><td>STM32H743XIH6</td><td>STM32H743XIH6</td></tr>
+<tr><td><strong>Основний IMU</strong> (SPI1)</td><td class="yes">ICM-42688-P</td><td class="yes">Murata SCH16T</td><td class="yes">ADIS16470</td></tr>
+<tr><td>Другий IMU (SPI6)</td><td>ICM-42688-P</td><td>ICM-42688-P</td><td>ICM-42688-P</td></tr>
+<tr><td>Третій IMU (SPI4)</td><td>BMI088</td><td>BMI088</td><td>BMI088</td></tr>
+<tr><td>Барометр</td><td>MS5611 ×2</td><td>MS5611 ×2</td><td>MS5611 ×2</td></tr>
+<tr><td>Компас</td><td>RM3100</td><td>RM3100</td><td>RM3100</td></tr>
+<tr><td>Підігрів IMU</td><td class="yes">є</td><td class="yes">є</td><td class="yes">є</td></tr>
+</table>
+</div>
+<div class="callout note"><div class="callout-title">Яку модель обрати</div>
+<strong>Control</strong> — базова, два ICM-42688-P із взаємним резервуванням.
+<strong>Control Plus</strong> — Murata SCH16T, промисловий сенсор із високою
+стабільністю до вібрацій і температури.
+<strong>Control Pro</strong> — ADIS16470, інерціальний модуль тактичного класу
+з суттєво нижчим дрейфом гіроскопа; вибір для тривалих польотів і роботи без GNSS.</div>
+
+<h2>Вбудовані сенсори</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Сенсор</th><th>Компонент</th><th>Шина</th><th>Призначення</th></tr>
+<tr><td>Акселерометр / гіроскоп</td><td>ICM-42688-P <span class="na">(Control)</span><br>Murata SCH16T <span class="na">(Plus)</span><br>ADIS16470 <span class="na">(Pro)</span></td><td>SPI1</td><td>Основний IMU</td></tr>
+<tr><td>Акселерометр / гіроскоп</td><td>ICM-42688-P</td><td>SPI6</td><td>High-rate, резервний</td></tr>
+<tr><td>Акселерометр / гіроскоп</td><td>BMI088</td><td>SPI4</td><td>Вібростійкий, резервний</td></tr>
+<tr><td>Магнітометр</td><td>RM3100</td><td>SPI2</td><td>Внутрішній компас</td></tr>
+<tr><td>Барометр</td><td>MS5611 ×2</td><td>SPI4, SPI6</td><td>Висотомір, резервований</td></tr>
+<tr><td>Незалежна пам'ять</td><td>FRAM FM25V05</td><td>SPI2</td><td>Зберігання параметрів</td></tr>
+</table>
+</div>
+<div class="callout tip"><div class="callout-title">Орієнтація сенсорів</div>
+Розворот сенсорів урахований у прошивці. Встановлюйте плату стрілкою вперед —
+<code>AHRS_ORIENTATION</code> міняти не потрібно.</div>
+
+<h2>Інтерфейси</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Інтерфейс</th><th>Кількість</th><th>Деталі</th></tr>
+<tr><td>Серійні порти</td><td>9</td><td>SERIAL0–SERIAL8, з них 7 UART + 2 USB</td></tr>
+<tr><td>PWM виходи</td><td>14</td><td>канали 1–12 підтримують DShot</td></tr>
+<tr><td>RC вхід</td><td>1</td><td>SBUS / CPPM / DSM на серворейці</td></tr>
+<tr><td>GPS порти</td><td>2</td><td>GPS&amp;SAFETY (SERIAL3) і UART4 (SERIAL4)</td></tr>
+<tr><td>I2C</td><td>4</td><td>усі виведені на роз'єми</td></tr>
+<tr><td>CAN Bus</td><td>2</td><td>DroneCAN</td></tr>
+<tr><td>Порти живлення</td><td>2</td><td>Power A (аналоговий), Power C (DroneCAN)</td></tr>
+<tr><td>Аналогові входи</td><td>2</td><td>3.3 В і 6.6 В, окремо вхід RSSI</td></tr>
+<tr><td>SPI</td><td>1</td><td>зовнішній SPI5 з двома CS</td></tr>
+<tr><td>USB</td><td>1</td><td>USB-C</td></tr>
+</table>
+</div>
+<p>Додатково: слот microSD, запобіжний вимикач, зумер, RGB-світлодіод стану.</p>
+
+<h2>Живлення</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Параметр</th><th>Значення</th></tr>
+<tr><td>Основне живлення</td><td>4.5 – 5.4 В</td></tr>
+<tr><td>USB вхід</td><td>4.75 – 5.25 В</td></tr>
+<tr><td>Вхід серворейки</td><td>0 – 10 В</td></tr>
+<tr><td>Розміри</td><td>98 × 62 × 16 мм</td></tr>
+<tr><td>Вага</td><td>58 г</td></tr>
+<tr><td>Робоча температура</td><td>−20 … +85 °C</td></tr>
+</table>
+</div>
+<div class="callout note"><div class="callout-title">Резервування живлення</div>
+Підтримується потрійне резервування: POWER_A, POWER_C і USB.
+Пріоритет: POWER_A / POWER_C → USB.</div>
+<div class="callout warning"><div class="callout-title">Увага</div>
+Серворейка гальванічно відокремлена: контролер <strong>не живить</strong> сервоприводи
+і <strong>не живиться</strong> від них. Живлення плати має надходити з POWER_A, POWER_C або USB.
+Напруга серворейки не вимірюється.</div>
+<div class="callout warning"><div class="callout-title">Порт RCIN</div>
+Призначений лише для живлення RC-приймача. Не підключайте до нього зовнішнє
+живлення чи навантаження.</div>
+
+<h2>Плата</h2>
+<div class="img-grid">
+  <img src="../images/atlas-pcb-3d.png" alt="Atlas Control — плата">
+  <img src="../images/atlas-in-uav.png" alt="Atlas Control у складі БпЛА">
+</div>
+<nav class="next-links">
+  <a href="pinout.html">Розпіновка →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

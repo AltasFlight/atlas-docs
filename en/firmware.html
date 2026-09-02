@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firmware — Atlas Control</title>
+<meta name="description" content="How to flash Atlas Control and download ArduPilot firmware.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/firmware.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/firmware.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Documentation</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Website</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Contact</a>
+    <a class="lang-btn" href="../uk/firmware.html">UK</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Documentation</div>
+        <a class="nav-item" href="index.html">Overview</a>
+        <a class="nav-item" href="pinout.html">Pinout</a>
+        <a class="nav-item" href="quickstart.html">Quick Start</a>
+        <a class="nav-item" href="config.html">Configuration</a>
+        <a class="nav-item active" href="firmware.html">Firmware</a>
+        <a class="nav-item" href="kit.html">Kit Contents</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Firmware</h1>
+<p>The controller runs ArduPilot. All three models share the same board identifier, so the
+firmware files are the same for any of them.</p>
+
+<h2>Loading firmware</h2>
+<p>Connect the controller to a computer with a USB-C cable and open the Mission Planner
+ground station.</p>
+<ol class="doc-list">
+<li>Go to <strong>SETUP → Install Firmware</strong>.</li>
+<li>Choose <strong>Load custom firmware</strong>.</li>
+<li>Select the downloaded <code>.apj</code> file for your vehicle type.</li>
+<li>Wait for the write to finish and the board to reconnect.</li>
+</ol>
+<div class="callout warning"><div class="callout-title">Do not use firmware built for other boards</div>
+Atlas Control differs from other controllers in sensor rotation and peripheral layout.
+Only use the files from this page.</div>
+
+<h2>DFU recovery</h2>
+<p>If the board is not detected by the ground station it can be flashed directly.
+Hold the boot button while plugging in USB — the controller starts in DFU mode, after
+which the bootloader can be written with any DFU utility.</p>
+
+<h2>Downloads</h2>
+<div class="firmware-group">
+  <div class="firmware-header">ArduPilot 4.6.3<span class="chevron">▾</span></div>
+  <div class="firmware-body open">
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/arducopter_4.6.3.apj">ArduCopter 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/arduplane_4.6.3.apj">ArduPlane 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/ardurover_4.6.3.apj">ArduRover 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/ardusub_4.6.3.apj">ArduSub 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/blimp_4.6.3.apj">ArduBlimp 4.6.3</a>
+  </div>
+</div>
+
+<h2>Logs</h2>
+<p>Flight logs are written to the microSD card fitted at the factory. They can be read
+through Mission Planner or by removing the card.</p>
+<nav class="next-links">
+  <a href="config.html">← Configuration</a>
+  <a href="kit.html">Kit Contents →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

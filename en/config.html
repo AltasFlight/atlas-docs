@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuration — Atlas Control</title>
+<meta name="description" content="ArduPilot configuration for Atlas Control: serial ports, PWM, GPIO, RC, battery, compass.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/config.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/config.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Documentation</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Website</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Contact</a>
+    <a class="lang-btn" href="../uk/config.html">UK</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Documentation</div>
+        <a class="nav-item" href="index.html">Overview</a>
+        <a class="nav-item" href="pinout.html">Pinout</a>
+        <a class="nav-item" href="quickstart.html">Quick Start</a>
+        <a class="nav-item active" href="config.html">Configuration</a>
+        <a class="nav-item" href="firmware.html">Firmware</a>
+        <a class="nav-item" href="kit.html">Kit Contents</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Configuration</h1>
+<p>This section covers the controller-specific details worth knowing when setting up ArduPilot.</p>
+
+<h2>Serial ports</h2>
+<p>Default port order. Protocols are freely configurable — any port can be reassigned
+to the peripheral you need.</p>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>SERIAL</th><th>Port</th><th>Default use</th><th>DMA</th></tr>
+<tr><td>SERIAL0</td><td>USB (OTG1)</td><td>Console, MAVLink2</td><td class="na">—</td></tr>
+<tr><td>SERIAL1</td><td>USART2</td><td>TELEM1, MAVLink2</td><td>yes, CTS/RTS</td></tr>
+<tr><td>SERIAL2</td><td>USART6</td><td>TELEM2, MAVLink2</td><td>yes, CTS/RTS</td></tr>
+<tr><td>SERIAL3</td><td>USART1</td><td>GPS1</td><td class="na">—</td></tr>
+<tr><td>SERIAL4</td><td>UART4</td><td>GPS2</td><td class="na">—</td></tr>
+<tr><td>SERIAL5</td><td>UART8</td><td>RC IN on the servo rail</td><td>yes</td></tr>
+<tr><td>SERIAL6</td><td>UART7</td><td>DEBUG, system console</td><td class="na">—</td></tr>
+<tr><td>SERIAL7</td><td>USART3</td><td>TELEM3, MAVLink2</td><td>yes</td></tr>
+<tr><td>SERIAL8</td><td>USB (OTG2)</td><td>SLCAN</td><td class="na">—</td></tr>
+</table>
+</div>
+
+<h2>PWM outputs</h2>
+<p>The controller has 14 PWM outputs. All support standard PWM;
+channels 1–12 additionally support DShot.</p>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Group</th><th>Outputs</th><th>Timer</th><th>Protocols</th></tr>
+<tr><td>Group 1</td><td>1, 2, 3, 4</td><td>TIM5</td><td>PWM, DShot</td></tr>
+<tr><td>Group 2</td><td>5, 6, 7, 8</td><td>TIM4</td><td>PWM, DShot</td></tr>
+<tr><td>Group 3</td><td>9, 10, 11, 12</td><td>TIM1</td><td>PWM, DShot</td></tr>
+<tr><td>Group 4</td><td>13, 14</td><td>TIM12</td><td>PWM only, no DMA</td></tr>
+</table>
+</div>
+<div class="callout warning"><div class="callout-title">Important</div>
+All outputs in a group must run at the same rate and protocol. If any channel in a group
+uses DShot, every channel in that group must use DShot too.</div>
+
+<h2>GPIO</h2>
+<p>Any of the 14 outputs can be used as a GPIO — for relays, buttons, RPM measurement and
+so on. Set <code>SERVOx_FUNCTION = -1</code> to do so.</p>
+<div class="code-block"><span class="comment">// ArduPilot GPIO numbering</span>
+PWM1(M1)=50   PWM2(M2)=51   PWM3(M3)=52   PWM4(M4)=53
+PWM5(M5)=54   PWM6(M6)=55   PWM7(M7)=56   PWM8(M8)=57
+PWM9(M9)=58   PWM10(M10)=59 PWM11(M11)=60 PWM12(M12)=61
+PWM13(M13)=62 PWM14(M14)=63 RSSI=92</div>
+
+<h2>Analog inputs</h2>
+<p>The number is the firmware's ADC channel, which you put into the pin parameter of
+the relevant device. It is not a connector contact or an MCU package pin.</p>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Input</th><th>Connector</th><th>Parameter</th><th>Value</th><th>Range</th></tr>
+<tr><td>Battery voltage</td><td>POWER A</td><td><code>BATT_VOLT_PIN</code></td><td>16</td><td>up to 3.3 V</td></tr>
+<tr><td>Battery current</td><td>POWER A</td><td><code>BATT_CURR_PIN</code></td><td>17</td><td>up to 3.3 V</td></tr>
+<tr><td>RSSI</td><td>RSSI</td><td><code>RSSI_ANA_PIN</code></td><td>6</td><td>up to 3.3 V</td></tr>
+</table>
+</div>
+
+<h2>RC input</h2>
+<p>The <strong>RC IN</strong> contact on the servo rail supports all unidirectional
+ArduPilot protocols: SBUS, CPPM, DSM. The same contact is the SERIAL5 (UART8) port,
+which is what protocols requiring a UART use.</p>
+<p>For CRSF, ELRS, FPort and SRXL2 set:</p>
+<div class="code-block"><span class="comment">// FPort</span>
+<span class="key">SERIAL5_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL5_OPTIONS</span>  = <span class="val">15</span>
+
+<span class="comment">// CRSF / ELRS</span>
+<span class="key">SERIAL5_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL5_OPTIONS</span>  = <span class="val">0</span>
+
+<span class="comment">// SRXL2 — connect the receiver TX pin only</span>
+<span class="key">SERIAL5_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL5_OPTIONS</span>  = <span class="val">4</span></div>
+
+<h2>Battery monitoring</h2>
+<h3>DroneCAN — the default</h3>
+<p>A DroneCAN power module connects to the <strong>POWER C</strong> port or to CAN1.</p>
+<div class="code-block"><span class="key">BATT_MONITOR</span>  = <span class="val">8</span>
+<span class="key">CAN_P1_DRIVER</span> = <span class="val">1</span></div>
+
+<h3>Analog module</h3>
+<p>An analog module connects to the <strong>POWER A</strong> port.</p>
+<div class="code-block"><span class="key">BATT_MONITOR</span>    = <span class="val">4</span>
+<span class="key">BATT_VOLT_PIN</span>   = <span class="val">16</span>
+<span class="key">BATT_CURR_PIN</span>   = <span class="val">17</span>
+<span class="key">BATT_VOLT_MULT</span>  = <span class="val">18.0</span>
+<span class="key">BATT_AMP_PERVLT</span> = <span class="val">24.0</span>
+<span class="key">BATT_VLT_OFFSET</span> = <span class="val">-0.1</span></div>
+<div class="callout note"><div class="callout-title">Second monitor</div>
+For a second battery use the <code>BATT2_</code> parameter set.</div>
+
+<h2>Compass</h2>
+<p>The board has an internal RM3100 compass. The controller normally sits inside the
+airframe, where the magnetic field is distorted by currents in the power wiring, so the
+external compass in the GPS module is usually the better choice as primary. External
+compasses connect to any of the I2C ports.</p>
+
+<h2>IMU heater</h2>
+<p>The controller has a built-in heater for the inertial sensors that holds them at a
+constant temperature and so reduces drift. The target temperature is set by
+<code>BRD_HEAT_TARG</code>, 45 °C by default.</p>
+<nav class="next-links">
+  <a href="quickstart.html">← Quick Start</a>
+  <a href="firmware.html">Firmware →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Налаштування — Atlas Control</title>
+<meta name="description" content="Налаштування ArduPilot для Atlas Control: серійні порти, PWM, GPIO, RC, батарея, компас.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/config.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/config.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Документація</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Сайт</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Контакт</a>
+    <a class="lang-btn" href="../en/config.html">EN</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Документація</div>
+        <a class="nav-item" href="index.html">Огляд</a>
+        <a class="nav-item" href="pinout.html">Розпіновка</a>
+        <a class="nav-item" href="quickstart.html">Швидкий старт</a>
+        <a class="nav-item active" href="config.html">Налаштування</a>
+        <a class="nav-item" href="firmware.html">Прошивка</a>
+        <a class="nav-item" href="kit.html">Комплектація</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Налаштування</h1>
+<p>Розділ описує особливості контролера, які варто знати при налаштуванні ArduPilot.</p>
+
+<h2>Серійні порти</h2>
+<p>Порядок портів за замовчуванням. Протоколи налаштовуються вільно —
+будь-який порт можна перепризначити під потрібну периферію.</p>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>SERIAL</th><th>Порт</th><th>Призначення</th><th>DMA</th></tr>
+<tr><td>SERIAL0</td><td>USB (OTG1)</td><td>Консоль, MAVLink2</td><td class="na">—</td></tr>
+<tr><td>SERIAL1</td><td>USART2</td><td>TELEM1, MAVLink2</td><td>є, CTS/RTS</td></tr>
+<tr><td>SERIAL2</td><td>USART6</td><td>TELEM2, MAVLink2</td><td>є, CTS/RTS</td></tr>
+<tr><td>SERIAL3</td><td>USART1</td><td>GPS1</td><td class="na">—</td></tr>
+<tr><td>SERIAL4</td><td>UART4</td><td>GPS2</td><td class="na">—</td></tr>
+<tr><td>SERIAL5</td><td>UART8</td><td>RC IN на серворейці</td><td>є</td></tr>
+<tr><td>SERIAL6</td><td>UART7</td><td>DEBUG, системна консоль</td><td class="na">—</td></tr>
+<tr><td>SERIAL7</td><td>USART3</td><td>TELEM3, MAVLink2</td><td>є</td></tr>
+<tr><td>SERIAL8</td><td>USB (OTG2)</td><td>SLCAN</td><td class="na">—</td></tr>
+</table>
+</div>
+
+<h2>PWM виходи</h2>
+<p>Контролер має 14 PWM-виходів. Усі підтримують звичайний PWM,
+канали 1–12 додатково підтримують DShot.</p>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Група</th><th>Виходи</th><th>Таймер</th><th>Протоколи</th></tr>
+<tr><td>Група 1</td><td>1, 2, 3, 4</td><td>TIM5</td><td>PWM, DShot</td></tr>
+<tr><td>Група 2</td><td>5, 6, 7, 8</td><td>TIM4</td><td>PWM, DShot</td></tr>
+<tr><td>Група 3</td><td>9, 10, 11, 12</td><td>TIM1</td><td>PWM, DShot</td></tr>
+<tr><td>Група 4</td><td>13, 14</td><td>TIM12</td><td>лише PWM, без DMA</td></tr>
+</table>
+</div>
+<div class="callout warning"><div class="callout-title">Важливо</div>
+Усі виходи однієї групи мають працювати на однаковій частоті та протоколі.
+Якщо хоч один канал групи використовує DShot, усі канали цієї групи теж мають бути на DShot.</div>
+
+<h2>GPIO</h2>
+<p>Будь-який з 14 виходів можна використати як GPIO — для реле, кнопок, вимірювання
+обертів тощо. Для цього задайте <code>SERVOx_FUNCTION = -1</code>.</p>
+<div class="code-block"><span class="comment">// нумерація GPIO в ArduPilot</span>
+PWM1(M1)=50   PWM2(M2)=51   PWM3(M3)=52   PWM4(M4)=53
+PWM5(M5)=54   PWM6(M6)=55   PWM7(M7)=56   PWM8(M8)=57
+PWM9(M9)=58   PWM10(M10)=59 PWM11(M11)=60 PWM12(M12)=61
+PWM13(M13)=62 PWM14(M14)=63 RSSI=92</div>
+
+<h2>Аналогові входи</h2>
+<p>Число — це номер каналу АЦП у прошивці, який підставляється в параметр піна
+відповідного пристрою. Це не контакт роз'єму і не вивід процесора.</p>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Вхід</th><th>Роз'єм</th><th>Параметр</th><th>Значення</th><th>Діапазон</th></tr>
+<tr><td>Напруга батареї</td><td>POWER A</td><td><code>BATT_VOLT_PIN</code></td><td>16</td><td>до 3.3 В</td></tr>
+<tr><td>Струм батареї</td><td>POWER A</td><td><code>BATT_CURR_PIN</code></td><td>17</td><td>до 3.3 В</td></tr>
+<tr><td>RSSI</td><td>RSSI</td><td><code>RSSI_ANA_PIN</code></td><td>6</td><td>до 3.3 В</td></tr>
+</table>
+</div>
+
+<h2>Вхід RC</h2>
+<p>Контакт <strong>RC IN</strong> на серворейці підтримує всі односторонні протоколи
+ArduPilot: SBUS, CPPM, DSM. Той самий контакт є портом SERIAL5 (UART8) — саме він
+використовується для протоколів, яким потрібен UART.</p>
+<p>Для CRSF, ELRS, FPort і SRXL2 задайте:</p>
+<div class="code-block"><span class="comment">// FPort</span>
+<span class="key">SERIAL5_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL5_OPTIONS</span>  = <span class="val">15</span>
+
+<span class="comment">// CRSF / ELRS</span>
+<span class="key">SERIAL5_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL5_OPTIONS</span>  = <span class="val">0</span>
+
+<span class="comment">// SRXL2 — під'єднується лише пін TX приймача</span>
+<span class="key">SERIAL5_PROTOCOL</span> = <span class="val">23</span>
+<span class="key">SERIAL5_OPTIONS</span>  = <span class="val">4</span></div>
+
+<h2>Моніторинг батареї</h2>
+<h3>DroneCAN — варіант за замовчуванням</h3>
+<p>Модуль живлення DroneCAN підключається до роз'єму <strong>POWER C</strong> або до CAN1.</p>
+<div class="code-block"><span class="key">BATT_MONITOR</span>  = <span class="val">8</span>
+<span class="key">CAN_P1_DRIVER</span> = <span class="val">1</span></div>
+
+<h3>Аналоговий модуль</h3>
+<p>Аналоговий модуль підключається до роз'єму <strong>POWER A</strong>.</p>
+<div class="code-block"><span class="key">BATT_MONITOR</span>    = <span class="val">4</span>
+<span class="key">BATT_VOLT_PIN</span>   = <span class="val">16</span>
+<span class="key">BATT_CURR_PIN</span>   = <span class="val">17</span>
+<span class="key">BATT_VOLT_MULT</span>  = <span class="val">18.0</span>
+<span class="key">BATT_AMP_PERVLT</span> = <span class="val">24.0</span>
+<span class="key">BATT_VLT_OFFSET</span> = <span class="val">-0.1</span></div>
+<div class="callout note"><div class="callout-title">Другий монітор</div>
+Для другої батареї використовуйте набір параметрів <code>BATT2_</code>.</div>
+
+<h2>Компас</h2>
+<p>На платі є внутрішній компас RM3100. Контролер зазвичай розташований усередині
+апарата, де магнітне поле спотворене струмами силових кабелів, тому основним компасом
+краще призначити зовнішній — той, що в GPS-модулі. Зовнішні компаси підключаються
+до будь-якого з роз'ємів I2C.</p>
+
+<h2>Підігрів IMU</h2>
+<p>Контролер має вбудований підігрів інерціальних сенсорів: він утримує сталу
+температуру і тим зменшує дрейф. Цільова температура задається параметром
+<code>BRD_HEAT_TARG</code>, за замовчуванням 45 °C.</p>
+<nav class="next-links">
+  <a href="quickstart.html">← Швидкий старт</a>
+  <a href="firmware.html">Прошивка →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

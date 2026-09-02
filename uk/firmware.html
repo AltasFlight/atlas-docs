@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прошивка — Atlas Control</title>
+<meta name="description" content="Як прошити Atlas Control і завантажити прошивку ArduPilot.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/firmware.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/firmware.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Документація</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Сайт</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Контакт</a>
+    <a class="lang-btn" href="../en/firmware.html">EN</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Документація</div>
+        <a class="nav-item" href="index.html">Огляд</a>
+        <a class="nav-item" href="pinout.html">Розпіновка</a>
+        <a class="nav-item" href="quickstart.html">Швидкий старт</a>
+        <a class="nav-item" href="config.html">Налаштування</a>
+        <a class="nav-item active" href="firmware.html">Прошивка</a>
+        <a class="nav-item" href="kit.html">Комплектація</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Прошивка</h1>
+<p>Контролер працює під ArduPilot. Усі три моделі використовують спільний
+ідентифікатор плати, тому файли прошивки для них однакові.</p>
+
+<h2>Як прошити</h2>
+<p>Підключіть контролер до комп'ютера кабелем USB-C і відкрийте наземну станцію
+Mission Planner.</p>
+<ol class="doc-list">
+<li>Перейдіть у <strong>SETUP → Install Firmware</strong>.</li>
+<li>Оберіть <strong>Load custom firmware</strong>.</li>
+<li>Вкажіть завантажений файл <code>.apj</code> для вашого типу апарата.</li>
+<li>Дочекайтесь завершення запису і перепідключення плати.</li>
+</ol>
+<div class="callout warning"><div class="callout-title">Не використовуйте прошивки інших плат</div>
+Розворот сенсорів і склад периферії Atlas Control відрізняються від інших контролерів.
+Завантажуйте лише файли з цієї сторінки.</div>
+
+<h2>Відновлення через DFU</h2>
+<p>Якщо плата не визначається наземною станцією, її можна прошити напряму.
+Утримуйте кнопку boot під час підключення USB — контролер стартує в режимі DFU,
+після чого записується завантажувач за допомогою будь-якої утиліти DFU.</p>
+
+<h2>Завантаження</h2>
+<div class="firmware-group">
+  <div class="firmware-header">ArduPilot 4.6.3<span class="chevron">▾</span></div>
+  <div class="firmware-body open">
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/arducopter_4.6.3.apj">ArduCopter 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/arduplane_4.6.3.apj">ArduPlane 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/ardurover_4.6.3.apj">ArduRover 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/ardusub_4.6.3.apj">ArduSub 4.6.3</a>
+    <a class="firmware-link" href="../images/ardupilot-pro-4_6_3/blimp_4.6.3.apj">ArduBlimp 4.6.3</a>
+  </div>
+</div>
+
+<h2>Логи</h2>
+<p>Логи польоту пишуться на карту microSD, встановлену на заводі. Зчитати їх можна
+через Mission Planner або вийнявши карту.</p>
+<nav class="next-links">
+  <a href="config.html">← Налаштування</a>
+  <a href="kit.html">Комплектація →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

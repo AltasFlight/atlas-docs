@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Швидкий старт — Atlas Control</title>
+<meta name="description" content="Як підключити живлення, GPS, приймач, телеметрію та сервоприводи до Atlas Control.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/quickstart.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/quickstart.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Документація</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Сайт</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Контакт</a>
+    <a class="lang-btn" href="../en/quickstart.html">EN</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Документація</div>
+        <a class="nav-item" href="index.html">Огляд</a>
+        <a class="nav-item" href="pinout.html">Розпіновка</a>
+        <a class="nav-item active" href="quickstart.html">Швидкий старт</a>
+        <a class="nav-item" href="config.html">Налаштування</a>
+        <a class="nav-item" href="firmware.html">Прошивка</a>
+        <a class="nav-item" href="kit.html">Комплектація</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Швидкий старт</h1>
+<p>Цей розділ описує, як подати живлення на контролер і підключити основну периферію.
+Точні номери пінів кожного роз'єму — у розділі <a href="pinout.html">Розпіновка</a>.</p>
+
+<h2>Призначення роз'ємів</h2>
+<div class="table-scroll">
+<table class="spec-table">
+<tr><th>Роз'єм</th><th>Що підключати</th></tr>
+<tr><td>POWER A</td><td>Аналоговий модуль живлення. Вимірює напругу і струм через ADC. Не підключайте сюди цифровий модуль.</td></tr>
+<tr><td>POWER C</td><td>Модуль живлення DroneCAN. Це варіант за замовчуванням.</td></tr>
+<tr><td>GPS &amp; SAFETY</td><td>GPS-модуль. Роз'єм поєднує GPS, I2C1, запобіжний вимикач і зумер.</td></tr>
+<tr><td>SERIAL4 (UART4 / I2C2)</td><td>Другий GPS або інша периферія на UART чи I2C.</td></tr>
+<tr><td>TELEM1 / TELEM2 / TELEM3</td><td>Телеметричні радіомодулі.</td></tr>
+<tr><td>CAN1 / CAN2</td><td>Пристрої DroneCAN: GPS, модулі живлення, сервоприводи.</td></tr>
+<tr><td>I2C1 – I2C4</td><td>Зовнішній компас, датчик повітряної швидкості, далекомір.</td></tr>
+<tr><td>RC IN</td><td>Приймач апаратури керування. Він же SERIAL5 (UART8).</td></tr>
+<tr><td>M1 – M14</td><td>Мотори і сервоприводи.</td></tr>
+<tr><td>USB-C</td><td>Підключення до комп'ютера: налаштування і прошивка.</td></tr>
+<tr><td>DEBUG &amp; UART7</td><td>Системна консоль і SWD. Для звичайної експлуатації не потрібен.</td></tr>
+<tr><td>ADC / RSSI</td><td>Аналогові входи і рівень сигналу приймача.</td></tr>
+<tr><td>microSD</td><td>Карта для логів. Встановлена на заводі.</td></tr>
+</table>
+</div>
+
+<h2>1. Орієнтація плати</h2>
+<p>Встановлюйте контролер стрілкою вперед, за напрямком польоту. Розворот сенсорів
+урахований у прошивці, тому <code>AHRS_ORIENTATION</code> змінювати не потрібно.</p>
+<div class="callout tip"><div class="callout-title">Якщо інакше не виходить</div>
+Коли плату неможливо поставити в штатному положенні, задайте фактичну орієнтацію
+параметром <code>AHRS_ORIENTATION</code>.</div>
+
+<h2>2. Живлення</h2>
+<p>Підключіть модуль живлення до <strong>POWER C</strong>, якщо він DroneCAN, або до
+<strong>POWER A</strong>, якщо аналоговий. Плату можна живити і по USB — цього достатньо
+для налаштування на столі, але не для польоту.</p>
+<div class="callout warning"><div class="callout-title">Плата не живиться від серворейки</div>
+Серворейка відокремлена. Якщо не подати живлення на POWER A, POWER C або USB,
+контролер не увімкнеться.</div>
+
+<h2>3. GPS і компас</h2>
+<p>Рекомендований варіант — GPS з інтерфейсом DroneCAN у роз'єм <strong>CAN1</strong> або
+<strong>CAN2</strong>. Звичайний GPS підключайте до <strong>GPS &amp; SAFETY</strong>: цей
+роз'єм одразу містить лінії компаса (I2C1), запобіжного вимикача і зумера.</p>
+<p>Встановлюйте GPS на щоглі, подалі від силових кабелів, стрілкою в тому ж напрямку,
+що й стрілка контролера.</p>
+<div class="callout note"><div class="callout-title">Про компас</div>
+На платі є внутрішній компас RM3100. Оскільки контролер зазвичай стоїть усередині
+апарата, де магнітне поле спотворене, основним варто робити зовнішній компас у GPS-модулі.</div>
+
+<h2>4. Запобіжний вимикач і зумер</h2>
+<p>Обидва входять до роз'єму GPS &amp; SAFETY. Якщо ви користуєтесь GPS-модулем зі
+вбудованими вимикачем і зумером, окремо їх ставити не треба.</p>
+<p>Під час польотів без GPS вимикач підключається до того самого роз'єму — без нього
+апарат не зброїться.</p>
+
+<h2>5. Апаратура керування</h2>
+<p>Приймач підключається до контакту <strong>RC IN</strong> на серворейці.
+Підтримуються всі односторонні протоколи ArduPilot: SBUS, CPPM, DSM.</p>
+<p>Для CRSF, ELRS, FPort і SRXL2 потрібен UART. Налаштування наведені в розділі
+<a href="config.html">Налаштування</a>.</p>
+
+<h2>6. Телеметрія</h2>
+<p>Наземний радіомодуль підключайте до <strong>TELEM1</strong> або <strong>TELEM2</strong> —
+вони підтримують апаратне керування потоком. <strong>TELEM3</strong> підходить для
+додаткових пристроїв.</p>
+
+<h2>7. Карта пам'яті</h2>
+<p>Карта microSD для логів встановлена на заводі, окремо нічого робити не потрібно.</p>
+
+<h2>8. Мотори і сервоприводи</h2>
+<p>Підключайте регулятори і сервоприводи до виходів <strong>M1 – M14</strong> у порядку,
+який ArduPilot визначає для вашого типу апарата.</p>
+<div class="callout warning"><div class="callout-title">Живлення сервоприводів</div>
+Серворейка повністю відокремлена від внутрішнього живлення контролера, і контролер
+її не живить. Щоб живити сервоприводи, підключіть BEC до будь-якої пари
+«плюс — мінус» на виходах M1 – M14. Максимум 10 В.</div>
+<nav class="next-links">
+  <a href="pinout.html">← Розпіновка</a>
+  <a href="config.html">Налаштування →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

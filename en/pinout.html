@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinout — Atlas Control</title>
+<meta name="description" content="Pinout of every Atlas Control connector: serial ports, power, CAN, I2C and the servo rail.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/pinout.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/pinout.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Documentation</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Website</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Contact</a>
+    <a class="lang-btn" href="../uk/pinout.html">UK</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Documentation</div>
+        <a class="nav-item" href="index.html">Overview</a>
+        <a class="nav-item active" href="pinout.html">Pinout</a>
+        <a class="nav-item" href="quickstart.html">Quick Start</a>
+        <a class="nav-item" href="config.html">Configuration</a>
+        <a class="nav-item" href="firmware.html">Firmware</a>
+        <a class="nav-item" href="kit.html">Kit Contents</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Pinout</h1>
+<p>All signal connectors are JST GH 1.25 mm.</p>
+<img src="../images/pinout.png" alt="Atlas Control pinout" class="doc-img">
+
+<h2>Serial ports</h2>
+<h3>TELEM1, TELEM2 — 6 pins</h3>
+<p>SERIAL1 and SERIAL2. Both support hardware flow control (CTS/RTS) and DMA.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>TX</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>RX</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>CTS</td><td>+3.3 V</td></tr>
+<tr><td>5</td><td>RTS</td><td>+3.3 V</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>GPS &amp; SAFETY — 10 pins</h3>
+<p>SERIAL3. Combined connector: GPS, the I2C1 bus, safety switch and buzzer.
+Intended for GPS modules with a built-in compass, switch and buzzer.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>GPS1_TX</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>GPS1_RX</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>I2C1_SCL</td><td>+3.3 V</td></tr>
+<tr><td>5</td><td>I2C1_SDA</td><td>+3.3 V</td></tr>
+<tr><td>6</td><td>SAFETY_SW</td><td>+3.3 V</td></tr>
+<tr><td>7</td><td>SAFETY_SW_LED</td><td>+3.3 V</td></tr>
+<tr><td>8</td><td>SAFE_VCC <span class="na">— not used</span></td><td class="na">—</td></tr>
+<tr><td>9</td><td>BUZZER</td><td>battery voltage</td></tr>
+<tr><td>10</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+<div class="callout note"><div class="callout-title">Pin 8 (SAFE_VCC)</div>
+Brought out to the connector but not connected to anything on the board — the same as on the CUAV X7.
+Power the safety switch and its LED from pin 1 (+5 V).</div>
+
+<h3>UART4 / I2C2 — 6 pins</h3>
+<p>SERIAL4. Combined port: a second GPS UART plus the I2C2 bus.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>UART4_TX</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>UART4_RX</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>I2C2_SCL</td><td>+3.3 V</td></tr>
+<tr><td>5</td><td>I2C2_SDA</td><td>+3.3 V</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>TELEM3 — 4 pins</h3>
+<p>SERIAL7 (USART3). Additional telemetry port, no flow control.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>TX</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>RX</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>DEBUG / SWD — 6 pins</h3>
+<p>SERIAL6 (UART7) — system console, plus the SWD interface for FMU debugging.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>DEBUG_TX</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>DEBUG_RX</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>SWDIO</td><td>+3.3 V</td></tr>
+<tr><td>5</td><td>SWCLK</td><td>+3.3 V</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>Power</h2>
+<h3>POWER A — analog module, 6 pins</h3>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>3</td><td>CURRENT</td><td>up to +3.3 V</td></tr>
+<tr><td>4</td><td>VOLTAGE</td><td>up to +3.3 V</td></tr>
+<tr><td>5</td><td>GND</td><td>—</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>POWER C — DroneCAN module, 6 pins</h3>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>3</td><td>CAN_H</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>CAN_L</td><td>+3.3 V</td></tr>
+<tr><td>5</td><td>GND</td><td>—</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>CAN — 4 pins</h2>
+<p>CAN1 and CAN2 share the same pinout.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>CAN_H</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>CAN_L</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>I2C — 4 pins</h2>
+<p>Four separate connectors: I2C1, I2C2, I2C3, I2C4, all with the same pinout.
+I2C1 is also present on the GPS&amp;SAFETY connector, and I2C2 on the UART4 connector.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>SCL</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>SDA</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>Other connectors</h2>
+<h3>ADC — 4 pins</h3>
+<p>Two spare analog inputs.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>ADC 3.3 V</td><td>up to +3.3 V</td></tr>
+<tr><td>3</td><td>ADC 6.6 V</td><td>up to +6.6 V</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>RSSI — 3 pins</h3>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>RSSI</td><td>up to +3.3 V</td></tr>
+<tr><td>3</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>SPI5 — 7 pins</h3>
+<p>External SPI bus with two chip-select lines.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Pin</th><th>Signal</th><th>Level</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 V</td></tr>
+<tr><td>2</td><td>SCK</td><td>+3.3 V</td></tr>
+<tr><td>3</td><td>MISO</td><td>+3.3 V</td></tr>
+<tr><td>4</td><td>MOSI</td><td>+3.3 V</td></tr>
+<tr><td>5</td><td>CS1</td><td>+3.3 V</td></tr>
+<tr><td>6</td><td>CS2</td><td>+3.3 V</td></tr>
+<tr><td>7</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>Servo rail</h2>
+<p>Three rows of contacts: signal, servo power and ground. Outputs are labelled M1–M14, with a separate RC IN contact for the receiver.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Contact</th><th>Function</th></tr>
+<tr><td>RC IN</td><td>RC receiver input, also SERIAL5 (UART8)</td></tr>
+<tr><td>M1 – M14</td><td>Outputs 1–14</td></tr>
+</table>
+</div>
+<p>Each output has three contacts: <strong>S</strong> — signal, <strong>+</strong> — servo
+power, <strong>−</strong> — ground. All 14 outputs are implemented identically.</p>
+<div class="callout note"><div class="callout-title">DShot</div>
+Channels 1–12 support DShot; channels 13–14 are PWM only, because their timer has no DMA.
+Output grouping and the shared rate are covered in the
+<a href="config.html">Configuration</a> section.</div>
+<div class="callout warning"><div class="callout-title">Servo power</div>
+The controller does not supply power to the servo rail. To power servos, connect a BEC
+to any plus/minus pair on outputs M1–M14. Maximum 10 V.</div>
+<nav class="next-links">
+  <a href="index.html">← Overview</a>
+  <a href="quickstart.html">Quick Start →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>

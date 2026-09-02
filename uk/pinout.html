@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Розпіновка — Atlas Control</title>
+<meta name="description" content="Розпіновка всіх роз'ємів Atlas Control: серійні порти, живлення, CAN, I2C, серворейка.">
+<link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/pinout.html">
+<link rel="alternate" hreflang="en" href="https://docs.atlascontrol.pro/en/pinout.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="hamburger" aria-label="menu">☰</button>
+  <a class="topbar-logo" href="index.html">Atlas<span>Control</span></a>
+  <span class="topbar-sep"></span>
+  <span class="topbar-title">Документація</span>
+  <div class="topbar-right">
+    <a class="topbar-link" href="https://atlascontrol.pro">← Сайт</a>
+    <a class="topbar-link" href="mailto:info@atlascontrol.pro">Контакт</a>
+    <a class="lang-btn" href="../en/pinout.html">EN</a>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="nav-section">
+      <div class="nav-section-title">Документація</div>
+        <a class="nav-item" href="index.html">Огляд</a>
+        <a class="nav-item active" href="pinout.html">Розпіновка</a>
+        <a class="nav-item" href="quickstart.html">Швидкий старт</a>
+        <a class="nav-item" href="config.html">Налаштування</a>
+        <a class="nav-item" href="firmware.html">Прошивка</a>
+        <a class="nav-item" href="kit.html">Комплектація</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <article class="page">
+      <div class="crumb">Atlas Control</div>
+      <h1>Розпіновка</h1>
+<p>Усі сигнальні роз'єми — JST GH 1.25 мм.</p>
+<img src="../images/pinout.png" alt="Розпіновка Atlas Control" class="doc-img">
+
+<h2>Серійні порти</h2>
+<h3>TELEM1, TELEM2 — 6 пінів</h3>
+<p>SERIAL1 і SERIAL2. Обидва підтримують апаратне керування потоком (CTS/RTS) і DMA.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>TX</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>RX</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>CTS</td><td>+3.3 В</td></tr>
+<tr><td>5</td><td>RTS</td><td>+3.3 В</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>GPS &amp; SAFETY — 10 пінів</h3>
+<p>SERIAL3. Комбінований роз'єм: GPS, шина I2C1, запобіжний вимикач і зумер.
+Розрахований на GPS-модулі зі вбудованим компасом, вимикачем і зумером.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>GPS1_TX</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>GPS1_RX</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>I2C1_SCL</td><td>+3.3 В</td></tr>
+<tr><td>5</td><td>I2C1_SDA</td><td>+3.3 В</td></tr>
+<tr><td>6</td><td>SAFETY_SW</td><td>+3.3 В</td></tr>
+<tr><td>7</td><td>SAFETY_SW_LED</td><td>+3.3 В</td></tr>
+<tr><td>8</td><td>SAFE_VCC <span class="na">— не використовується</span></td><td class="na">—</td></tr>
+<tr><td>9</td><td>BUZZER</td><td>напруга батареї</td></tr>
+<tr><td>10</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+<div class="callout note"><div class="callout-title">Пін 8 (SAFE_VCC)</div>
+Виведений на роз'єм, але на платі нікуди не підключений — так само, як у CUAV X7.
+Живлення запобіжного вимикача і його світлодіода беріть з піна 1 (+5 В).</div>
+
+<h3>UART4 / I2C2 — 6 пінів</h3>
+<p>SERIAL4. Комбінований порт: другий UART для GPS плюс шина I2C2.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>UART4_TX</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>UART4_RX</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>I2C2_SCL</td><td>+3.3 В</td></tr>
+<tr><td>5</td><td>I2C2_SDA</td><td>+3.3 В</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>TELEM3 — 4 піни</h3>
+<p>SERIAL7 (USART3). Додатковий телеметричний порт без керування потоком.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>TX</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>RX</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>DEBUG / SWD — 6 пінів</h3>
+<p>SERIAL6 (UART7) — системна консоль, а також інтерфейс SWD для налагодження FMU.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>DEBUG_TX</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>DEBUG_RX</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>SWDIO</td><td>+3.3 В</td></tr>
+<tr><td>5</td><td>SWCLK</td><td>+3.3 В</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>Живлення</h2>
+<h3>POWER A — аналоговий модуль, 6 пінів</h3>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>3</td><td>CURRENT</td><td>до +3.3 В</td></tr>
+<tr><td>4</td><td>VOLTAGE</td><td>до +3.3 В</td></tr>
+<tr><td>5</td><td>GND</td><td>—</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>POWER C — DroneCAN модуль, 6 пінів</h3>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>3</td><td>CAN_H</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>CAN_L</td><td>+3.3 В</td></tr>
+<tr><td>5</td><td>GND</td><td>—</td></tr>
+<tr><td>6</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>CAN — 4 піни</h2>
+<p>CAN1 і CAN2, однакова розпіновка.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>CAN_H</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>CAN_L</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>I2C — 4 піни</h2>
+<p>Чотири окремі роз'єми: I2C1, I2C2, I2C3, I2C4. Розпіновка однакова.
+I2C1 продубльована на роз'ємі GPS&amp;SAFETY, I2C2 — на роз'ємі UART4.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>SCL</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>SDA</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>Інші роз'єми</h2>
+<h3>ADC — 4 піни</h3>
+<p>Два вільні аналогові входи.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>ADC 3.3 В</td><td>до +3.3 В</td></tr>
+<tr><td>3</td><td>ADC 6.6 В</td><td>до +6.6 В</td></tr>
+<tr><td>4</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>RSSI — 3 піни</h3>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>RSSI</td><td>до +3.3 В</td></tr>
+<tr><td>3</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h3>SPI5 — 7 пінів</h3>
+<p>Зовнішня шина SPI з двома лініями вибору кристала.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Пін</th><th>Сигнал</th><th>Рівень</th></tr>
+<tr><td>1</td><td>VCC</td><td>+5 В</td></tr>
+<tr><td>2</td><td>SCK</td><td>+3.3 В</td></tr>
+<tr><td>3</td><td>MISO</td><td>+3.3 В</td></tr>
+<tr><td>4</td><td>MOSI</td><td>+3.3 В</td></tr>
+<tr><td>5</td><td>CS1</td><td>+3.3 В</td></tr>
+<tr><td>6</td><td>CS2</td><td>+3.3 В</td></tr>
+<tr><td>7</td><td>GND</td><td>—</td></tr>
+</table>
+</div>
+
+<h2>Серворейка</h2>
+<p>Три ряди контактів: сигнал, живлення сервоприводів і земля.
+Виходи позначені M1–M14, окремий контакт RC IN — вхід RC-приймача.</p>
+<div class="table-scroll">
+<table class="pin-table">
+<tr><th>Контакт</th><th>Призначення</th></tr>
+<tr><td>RC IN</td><td>Вхід RC-приймача, він же SERIAL5 (UART8)</td></tr>
+<tr><td>M1 – M14</td><td>Виходи 1–14</td></tr>
+</table>
+</div>
+<p>Кожен вихід має три контакти: <strong>S</strong> — сигнал, <strong>+</strong> — живлення
+сервоприводів, <strong>−</strong> — земля. Усі 14 виходів реалізовані однаково.</p>
+<div class="callout note"><div class="callout-title">DShot</div>
+Канали 1–12 підтримують DShot, канали 13–14 — лише PWM, оскільки на їхньому таймері
+немає DMA. Групування виходів і спільна частота описані в розділі
+<a href="config.html">Налаштування</a>.</div>
+<div class="callout warning"><div class="callout-title">Живлення сервоприводів</div>
+Контролер не подає живлення на серворейку. Щоб живити сервоприводи, підключіть
+BEC до будь-якої пари «плюс — мінус» виходів M1–M14. Максимум 10 В.</div>
+<nav class="next-links">
+  <a href="index.html">← Огляд</a>
+  <a href="quickstart.html">Швидкий старт →</a>
+</nav>
+    </article>
+  </main>
+</div>
+
+<script src="../assets/lang.js"></script>
+</body>
+</html>
