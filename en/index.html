@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta name="theme-color" content="#2a331d">
 <title>Overview — Atlas Control</title>
 <meta name="description" content="Atlas Control flight controller: sensors, interfaces, power and the difference between models.">
 <link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/index.html">
@@ -13,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -74,7 +73,7 @@ substantially lower gyro drift; the choice for long flights and GNSS-denied oper
 
 <h2>Built-in sensors</h2>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>Sensor</th><th>Component</th><th>Bus</th><th>Purpose</th></tr>
 <tr><td>Accelerometer / gyroscope</td><td>ICM-42688-P <span class="na">(Control)</span><br>Murata SCH16T <span class="na">(Plus)</span><br>ADIS16470 <span class="na">(Pro)</span></td><td>SPI1</td><td>Primary IMU</td></tr>
 <tr><td>Accelerometer / gyroscope</td><td>ICM-42688-P</td><td>SPI6</td><td>High-rate, redundant</td></tr>
@@ -90,7 +89,7 @@ there is no need to change <code>AHRS_ORIENTATION</code>.</div>
 
 <h2>Interfaces</h2>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>Interface</th><th>Count</th><th>Details</th></tr>
 <tr><td>Serial ports</td><td>9</td><td>SERIAL0–SERIAL8: 7 UARTs + 2 USB</td></tr>
 <tr><td>PWM outputs</td><td>14</td><td>channels 1–12 support DShot</td></tr>

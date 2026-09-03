@@ -526,3 +526,8 @@ ol.doc-list{counter-reset:step;list-style:none}
 ol.doc-list li::before{
   content:counter(step);counter-increment:step;
   font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--accent)}
+
+/* таблиці на 3+ колонки: не віддавати першій колонці 40% */
+.spec-table.cols td:first-child,
+.spec-table.cols th:first-child { width: auto; }
+.spec-table.cols { table-layout: auto; }

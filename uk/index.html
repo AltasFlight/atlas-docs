@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta name="theme-color" content="#2a331d">
 <title>Огляд — Atlas Control</title>
 <meta name="description" content="Польотний контролер Atlas Control: сенсори, інтерфейси, живлення, різниця між моделями.">
 <link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/index.html">
@@ -13,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -74,7 +73,7 @@ STM32H743XIH6 з сенсорами промислового класу. Сум�
 
 <h2>Вбудовані сенсори</h2>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>Сенсор</th><th>Компонент</th><th>Шина</th><th>Призначення</th></tr>
 <tr><td>Акселерометр / гіроскоп</td><td>ICM-42688-P <span class="na">(Control)</span><br>Murata SCH16T <span class="na">(Plus)</span><br>ADIS16470 <span class="na">(Pro)</span></td><td>SPI1</td><td>Основний IMU</td></tr>
 <tr><td>Акселерометр / гіроскоп</td><td>ICM-42688-P</td><td>SPI6</td><td>High-rate, резервний</td></tr>
@@ -90,7 +89,7 @@ STM32H743XIH6 з сенсорами промислового класу. Сум�
 
 <h2>Інтерфейси</h2>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>Інтерфейс</th><th>Кількість</th><th>Деталі</th></tr>
 <tr><td>Серійні порти</td><td>9</td><td>SERIAL0–SERIAL8, з них 7 UART + 2 USB</td></tr>
 <tr><td>PWM виходи</td><td>14</td><td>канали 1–12 підтримують DShot</td></tr>

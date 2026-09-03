@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta name="theme-color" content="#2a331d">
 <title>Configuration — Atlas Control</title>
 <meta name="description" content="ArduPilot configuration for Atlas Control: serial ports, PWM, GPIO, RC, battery, compass.">
 <link rel="alternate" hreflang="uk" href="https://docs.atlascontrol.pro/uk/config.html">
@@ -13,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -52,7 +51,7 @@
 <p>Default port order. Protocols are freely configurable — any port can be reassigned
 to the peripheral you need.</p>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>SERIAL</th><th>Port</th><th>Default use</th><th>DMA</th></tr>
 <tr><td>SERIAL0</td><td>USB (OTG1)</td><td>Console, MAVLink2</td><td class="na">—</td></tr>
 <tr><td>SERIAL1</td><td>USART2</td><td>TELEM1, MAVLink2</td><td>yes, CTS/RTS</td></tr>
@@ -70,7 +69,7 @@ to the peripheral you need.</p>
 <p>The controller has 14 PWM outputs. All support standard PWM;
 channels 1–12 additionally support DShot.</p>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>Group</th><th>Outputs</th><th>Timer</th><th>Protocols</th></tr>
 <tr><td>Group 1</td><td>1, 2, 3, 4</td><td>TIM5</td><td>PWM, DShot</td></tr>
 <tr><td>Group 2</td><td>5, 6, 7, 8</td><td>TIM4</td><td>PWM, DShot</td></tr>
@@ -95,7 +94,7 @@ PWM13(M13)=62 PWM14(M14)=63 RSSI=92</div>
 <p>The number is the firmware's ADC channel, which you put into the pin parameter of
 the relevant device. It is not a connector contact or an MCU package pin.</p>
 <div class="table-scroll">
-<table class="spec-table">
+<table class="spec-table cols">
 <tr><th>Input</th><th>Connector</th><th>Parameter</th><th>Value</th><th>Range</th></tr>
 <tr><td>Battery voltage</td><td>POWER A</td><td><code>BATT_VOLT_PIN</code></td><td>16</td><td>up to 3.3 V</td></tr>
 <tr><td>Battery current</td><td>POWER A</td><td><code>BATT_CURR_PIN</code></td><td>17</td><td>up to 3.3 V</td></tr>
